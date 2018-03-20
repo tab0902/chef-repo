@@ -1,0 +1,15 @@
+{
+  "name": "enyfar_local",
+  "description": "local development environment for enyfar",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "user": {
+      "name":"vagrant"
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "enyfar_local",
+  "description": "local environment for enyfar",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "mysql": {
+      "db_name":"anybirth"
+    },
+    "repository": {
+      "owner":"tab0902",
+      "name":"anybirth"
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[vbox]",
+    "recipe[vim]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]",
+    "recipe[repository]"
+  ]
+}

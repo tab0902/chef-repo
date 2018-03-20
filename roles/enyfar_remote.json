@@ -1,0 +1,36 @@
+{
+  "name": "enyfar_remote",
+  "description": "remote environment for enyfar",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "mysql": {
+      "db_name":"anybirth"
+    },
+    "repository": {
+      "owner":"tab0902",
+      "name":"anybirth"
+    },
+    "certbot": {
+      "webroot":"/var/www/html",
+      "email":"sho@anybirth.co.jp"
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[user]",
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[vim]",
+    "recipe[apache]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]",
+    "recipe[repository]",
+    "recipe[certbot]",
+    "recipe[mod_wsgi]"
+  ]
+}

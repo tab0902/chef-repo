@@ -1,0 +1,19 @@
+WSGIScriptAlias / /home/<%= @user_name %>/<%= @project_name %>/<%= @project_name %>/wsgi.py
+WSGIPythonHome /home/<%= @user_name %>/.pyenv/versions/miniconda3-<%= @miniconda_version %>/
+WSGIPythonPath /home/<%= @user_name %>/<%= @project_name %>
+<Directory "/<%= @user_name %>/<%= @user_name %>/<%= @project_name %>/<%= @project_name %>">
+  <Files wsgi.py>
+    Order allow,deny
+    Allow from all
+  </Files>
+</Directory>
+Alias /static/ /home/<%= @user_name %>/<%= @project_name %>/static/
+<Directory "/home/<%= @user_name %>/<%= @project_name %>/static">
+  Order allow,deny
+  Allow from all
+</Directory>
+Alias /media/ /home/<%= @user_name %>/<%= @project_name %>/media/
+<Directory "/home/<%= @user_name %>/<%= @project_name %>/media">
+  Order allow,deny
+  Allow from all
+</Directory>
