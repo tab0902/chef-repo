@@ -30,7 +30,7 @@ service 'mysqld' do
 end
 
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
-password = data_bag["password"]
+password = data_bag["#{db_name}"]
 
 template "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   owner "root"
@@ -57,7 +57,7 @@ file "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
 end
 
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
-password = data_bag["password"]
+password = data_bag["#{db_name}"]
 
 template "#{Chef::Config[:file_cache_path]}/create_db.sql" do
   owner "root"
@@ -85,7 +85,7 @@ file "#{Chef::Config[:file_cache_path]}/create_db.sql" do
 end
 
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
-password = data_bag["password"]
+password = data_bag["#{db_name}"]
 
 template "#{my_cnf}" do
   owner "root"

@@ -1,9 +1,16 @@
 {
   "id": "mysql",
-  "password": {
-    "encrypted_data": "5fEaVnKU9eBjsM1qAITD3nJaENZaC7itLSMmyOSQ8j1bYRg=\n",
-    "iv": "i99rnlH8/WUqleIl\n",
-    "auth_tag": "DqgyvI/HC7XLu1jniTrlng==\n",
+  "anybirth": {
+    "encrypted_data": "fEhtOM1ZG+clBW7Lj0ehH63rlDAQHiU0UDGv1bFM9tHeqZc=\n",
+    "iv": "BLSO8hXf7fufP9MO\n",
+    "auth_tag": "CEP5T+NEyrT1WXlTNTQ1NQ==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  },
+  "wp": {
+    "encrypted_data": "hC9nRF4Co+c5lNKWl0WO7Upls0/h/0karUsfEqkRHeSwCWY=\n",
+    "iv": "D0rj3jjMZpnWPFxB\n",
+    "auth_tag": "QV+Jy+LNMoHMlrInVYYGew==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   }
