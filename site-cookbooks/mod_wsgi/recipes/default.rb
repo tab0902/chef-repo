@@ -46,6 +46,5 @@ execute "install_mod_wsgi" do
   notifies :restart, "service[httpd]", :immediately
   command <<-EOS
     #{pip} install mod_wsgi
-    chmod 755 /home/#{user_name}
   EOS
 end

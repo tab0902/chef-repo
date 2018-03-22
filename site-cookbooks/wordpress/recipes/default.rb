@@ -52,18 +52,8 @@ template "#{httpd_conf}" do
   group "root"
   mode 0644
   source "httpd.conf.erb"
-  notifies :run, "execute[chmod_home_dir]", :immediately
   notifies :restart, "service[httpd]", :immediately
   variables({
     :wordpress => wordpress,
   })
-end
-
-execute "chmod_home_dir" do
-  action :nothing
-  user "#{user_name}"
-  group "#{user_name}"
-  command <<-EOS
-    chmod 755 /home/#{user_name}
-  EOS
 end
