@@ -6,6 +6,8 @@
 
 user_name  = node['user']['name']
 db_name    = node['mysql']['db_name']
+db_host    = node['mysql']['db_host']
+charset    = node['mysql']['charset']
 repository = node['wordpress']['repository']
 httpd_conf = node['wordpress']['httpd_conf']
 
@@ -40,6 +42,8 @@ template "#{wordpress}/wp-config.php" do
     :db_name => db_name,
     :user_name => user_name,
     :password => password,
+    :db_host => db_host,
+    :charset => charset
   })
 end
 

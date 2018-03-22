@@ -4,10 +4,13 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-repository  = node['mysql']['repository']
-db_name     = node["mysql"]["db_name"]
-my_cnf      = node['mysql']['my_cnf']
-user_name   = node["user"]["name"]
+repository = node['mysql']['repository']
+db_name    = node["mysql"]["db_name"]
+db_host    = node['mysql']['db_host']
+charset    = node['mysql']['charset']
+collate    = node['mysql']['collate']
+my_cnf     = node['mysql']['my_cnf']
+user_name  = node["user"]["name"]
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{repository}" do
   source "http://repo.mysql.com/#{repository}"
@@ -68,8 +71,11 @@ template "#{Chef::Config[:file_cache_path]}/create_db.sql" do
   notifies :run, "execute[create_db]", :immediately
   variables({
     :db_name => db_name,
+    :db_host => db_host,
     :user_name => user_name,
     :password => password,
+    :charset => charset,
+    :collate => collate
   })
 end
 
@@ -95,6 +101,7 @@ template "#{my_cnf}" do
   notifies :restart, 'service[mysqld]', :immediately
   variables({
     :user_name => user_name,
-    :password => password
+    :password => password,
+    :charset => charset
   })
 end

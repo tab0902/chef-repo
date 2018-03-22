@@ -26,13 +26,13 @@ symbolic-links=0
 # Recommended in standard MySQL setup
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 
-character-set-server=utf8
+character-set-server=<%= @charset %>
 
 [mysql]
-default-character-set=utf8
+default-character-set=<%= @charset %>
 
 [mysqldump]
-default-character-set=utf8
+default-character-set=<%= @charset %>
 
 <% if @user_name == 'vagrant' %>
 [client]

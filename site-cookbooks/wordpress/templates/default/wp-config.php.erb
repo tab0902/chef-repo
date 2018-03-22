@@ -35,10 +35,10 @@ define('DB_USER', '<%= @user_name %>');
 define('DB_PASSWORD', '<%= @password %>');
 
 /** MySQL のホスト名 */
-define('DB_HOST', 'localhost');
+define('DB_HOST', '<%= @db_host %>');
 
 /** データベースのテーブルを作成する際のデータベースの文字セット */
-define('DB_CHARSET', 'utf8');
+define('DB_CHARSET', '<%= @charset %>');
 
 /** データベースの照合順序 (ほとんどの場合変更する必要はありません) */
 define('DB_COLLATE', '');
