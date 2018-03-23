@@ -23,14 +23,14 @@ execute "upgrade_pip" do
   EOS
 end
 
-packages.each_value do |item|
-  execute "install_#{item[:pkg]}" do
+packages.each do |key, value|
+  execute "install_#{key}" do
     user "#{user_name}"
     group "#{user_name}"
     environment "HOME" => "/home/#{user_name}"
-    not_if "find #{site_packages}/#{item[:dir]}"
+    not_if "find #{site_packages}/#{value[:dir]}"
     command <<-EOS
-      #{pip} install #{item[:pkg]}
+      #{pip} install #{value[:pkg]}
     EOS
   end
 end
