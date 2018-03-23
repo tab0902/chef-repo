@@ -1,0 +1,20 @@
+{
+  "name": "ml_local",
+  "description": "local environment for machine learning",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[vbox]",
+    "recipe[vim]",
+    "recipe[git]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[conda]"
+  ]
+}

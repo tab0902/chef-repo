@@ -1,0 +1,51 @@
+{
+  "name": "ml_local",
+  "description": "local development environment for machine learning",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "user": {
+      "name":"vagrant"
+    },
+    "conda": {
+      "packages": {
+        "numpy": {
+          "pkg": "numpy",
+          "dir": "numpy"
+        },
+        "scipy": {
+          "pkg": "scipy",
+          "dir": "scipy"
+        },
+        "matplotlib": {
+          "pkg": "matplotlib",
+          "dir": "matplotlib"
+        },
+        "ipython": {
+          "pkg": "IPython",
+          "dir": "IPython"
+        },
+        "jupyter": {
+          "pkg": "jupyter",
+          "dir": "jupyter_core"
+        },
+        "scikit-learn": {
+          "pkg": "scikit-learn",
+          "dir": "sklearn"
+        },
+        "pandas": {
+          "pkg": "pandas",
+          "dir": "pandas"
+        },
+        "pillow": {
+          "pkg": "Pillow",
+          "dir": "PIL"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}
