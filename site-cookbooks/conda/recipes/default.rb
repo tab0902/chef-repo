@@ -24,3 +24,13 @@ packages.each do |key, value|
     EOS
   end
 end
+
+execute "mkdir_ml" do
+  user "#{user_name}"
+  group "#{user_name}"
+  environment "HOME" => "/home/#{user_name}"
+  not_if "find /home/#{user_name}/ml"
+  command <<-EOS
+    mkdir ~/ml
+  EOS
+end
