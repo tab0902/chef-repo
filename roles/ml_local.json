@@ -15,6 +15,7 @@
     "recipe[git]",
     "recipe[pyenv]",
     "recipe[miniconda]",
-    "recipe[conda]"
+    "recipe[conda]",
+    "recipe[jupyter]"
   ]
 }
