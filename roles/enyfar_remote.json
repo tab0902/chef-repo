@@ -5,11 +5,11 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "mysql": {
-      "db_name":"anybirth"
+      "db_name":"enyfar"
     },
     "repository": {
-      "owner":"tab0902",
-      "name":"anybirth"
+      "owner":"anybirth",
+      "name":"enyfar"
     },
     "certbot": {
       "webroot":"/var/www/html",

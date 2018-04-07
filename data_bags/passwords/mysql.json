@@ -1,16 +1,23 @@
 {
   "id": "mysql",
-  "anybirth": {
-    "encrypted_data": "fEhtOM1ZG+clBW7Lj0ehH63rlDAQHiU0UDGv1bFM9tHeqZc=\n",
-    "iv": "BLSO8hXf7fufP9MO\n",
-    "auth_tag": "CEP5T+NEyrT1WXlTNTQ1NQ==\n",
+  "enyfar": {
+    "encrypted_data": "hp1iqF2kH5JZIOK71ZEl4TkhKq4wOJZd+dlMUOQsJod6noA=\n",
+    "iv": "QSH+8cdSlQ/3Rvu6\n",
+    "auth_tag": "+yz1YQbYVrd01f9lMGJyrA==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  },
+  "enyfar_otaku": {
+    "encrypted_data": "RwDZRPUP9V6tR+kKzOratCi+5fHW5VwzcaUHO4uJT0OkvJ8=\n",
+    "iv": "9gqCR9apCkIi68he\n",
+    "auth_tag": "gvjg8sAru8iFlZd8IAcxMA==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
   "wp": {
-    "encrypted_data": "hC9nRF4Co+c5lNKWl0WO7Upls0/h/0karUsfEqkRHeSwCWY=\n",
-    "iv": "D0rj3jjMZpnWPFxB\n",
-    "auth_tag": "QV+Jy+LNMoHMlrInVYYGew==\n",
+    "encrypted_data": "x1Y8L5Wk3abrDApAZvgYcYBWvMM3s2bnwV0fGCjD0Y7inGY=\n",
+    "iv": "KyaBpwcULwwURsb5\n",
+    "auth_tag": "Rw5in4l9hwsvC7HHfZ6Dlw==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   }
