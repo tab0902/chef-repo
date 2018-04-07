@@ -7,16 +7,16 @@
 package "kernel-devel" do
   action [ :install, :upgrade ]
   notifies :restart, "service[vboxadd-service]", :immediately
-  notifies :run, "execute[set_timezone]", :immediately
 end
 
 service "vboxadd-service" do
-  action :nothing
+  action :start
 end
 
-execute "set_timezone" do
-  action :nothing
-  user "root"
+file '/etc/localtime' do
+  owner "root"
   group "root"
-  command "cp /usr/share/zoneinfo/Japan /etc/localtime"
+  mode 0644
+  manage_symlink_source true
+  content IO.read('/usr/share/zoneinfo/Japan')
 end
