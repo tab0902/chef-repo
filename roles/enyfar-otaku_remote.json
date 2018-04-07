@@ -1,0 +1,36 @@
+{
+  "name": "enyfar-otaku_remote",
+  "description": "remote environment for enyfar-otaku",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "mysql": {
+      "db_name":"enyfar_otaku"
+    },
+    "repository": {
+      "owner":"anybirth",
+      "name":"enyfar-otaku"
+    },
+    "certbot": {
+      "webroot":"/var/www/html",
+      "email":"sho@anybirth.co.jp"
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[user]",
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[vim]",
+    "recipe[apache]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]",
+    "recipe[repository]",
+    "recipe[certbot]",
+    "recipe[mod_wsgi]"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "enyfar-otaku_local",
+  "description": "local environment for enyfar-otaku",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "mysql": {
+      "db_name":"enyfar_otaku"
+    },
+    "repository": {
+      "owner":"anybirth",
+      "name":"enyfar-otaku"
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[vbox]",
+    "recipe[vim]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]",
+    "recipe[repository]"
+  ]
+}
