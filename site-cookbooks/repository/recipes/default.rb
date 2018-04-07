@@ -17,6 +17,10 @@ git "/home/#{user_name}/#{repo_name}" do
   notifies :run, "execute[remote_set_url]", :immediately
 end
 
+file "/home/#{user_name}/anybirth" do
+  action :delete
+end
+
 execute "remote_set_url" do
   action :nothing
   user "#{user_name}"
