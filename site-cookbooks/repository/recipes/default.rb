@@ -14,6 +14,7 @@ git "/home/#{user_name}/#{repo_name}" do
   user "#{user_name}"
   group "#{user_name}"
   action :sync
+  not_if "find /home/#{user_name}/#{repo_name}"
   notifies :run, "execute[remote_set_url]", :immediately
 end
 
