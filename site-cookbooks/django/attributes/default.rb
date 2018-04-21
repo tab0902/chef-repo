@@ -15,6 +15,10 @@ default['django']['packages'] = {
     pkg: "twitter",
     dir: "twitter"
   },
+  shippo: {
+    pkg: "shippo",
+    dir: "shippo"
+  },
   paypalrestsdk: {
     pkg: "paypalrestsdk",
     dir: "paypalrestsdk"
