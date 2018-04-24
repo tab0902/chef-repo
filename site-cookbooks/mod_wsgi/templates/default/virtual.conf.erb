@@ -1,0 +1,69 @@
+NameVirtualHost *:80
+NameVirtualHost *:443
+
+LoadModule wsgi_module /home/<%=@user_name%>/.pyenv/versions/miniconda3-<%=@miniconda_version%>/lib/python<%=@python_version%>/site-packages/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so
+WSGIPythonHome /home/<%=@user_name%>/.pyenv/versions/miniconda3-<%=@miniconda_version%>/
+WSGIPythonPath /home/<%=@user_name%>/<%= @project_name %>
+
+<VirtualHost *:443>
+  ServerName <%=@domain%>
+
+  SSLEngine On
+  SSLCertificateFile /etc/letsencrypt/live/<%=@domain%>/cert.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/<%=@domain%>/privkey.pem
+  SSLCertificateChainFile /etc/letsencrypt/live/<%=@domain%>/chain.pem
+
+  WSGIScriptAlias / /home/<%=@user_name%>/<%= @project_name %>/<%= @project_name %>/wsgi.py
+
+  <Directory "/home/<%=@user_name%>/<%= @project_name %>/<%= @project_name %>">
+    <Files wsgi.py>
+      Order allow,deny
+      Allow from all
+    </Files>
+  </Directory>
+
+  Alias /static/ /home/<%=@user_name%>/<%= @project_name %>/<%= @project_name %>/static/
+  Alias /media/ /home/<%=@user_name%>/<%= @project_name %>/<%= @project_name %>/media/
+
+  <Directory "/home/<%=@user_name%>/<%= @project_name %>/<%= @project_name %>/static">
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  <Directory "/home/<%=@user_name%>/<%= @project_name %>/<%= @project_name %>/media">
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+</VirtualHost>
+
+<VirtualHost *:80>
+  ServerName <%=@domain%>
+
+  RewriteEngine on
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName www.<%=@domain%>
+
+    RewriteEngine on
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://<%=@domain%>%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.<%=@domain%>
+
+    SSLEngine On
+    SSLCertificateFile /etc/letsencrypt/live/<%=@domain%>/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/<%=@domain%>/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/<%=@domain%>/chain.pem
+
+    RewriteEngine on
+    RewriteRule ^(.*)$ https://<%=@domain%>%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
