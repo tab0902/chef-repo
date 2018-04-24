@@ -8,7 +8,7 @@
       "name":"dev"
     },
     "certbot": {
-      "domain":"enyfar-otaku.xyz"
+      "domain":"enyfar.xyz"
     }
   },
   "override_attributes": {

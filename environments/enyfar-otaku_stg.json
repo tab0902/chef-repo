@@ -8,7 +8,7 @@
       "name":"stg"
     },
     "certbot": {
-      "domain":"enyfar-otaku.work"
+      "domain":"enyfar.work"
     }
   },
   "override_attributes": {
