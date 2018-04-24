@@ -25,16 +25,15 @@ execute "unzip_wordpress" do
   group "#{user_name}"
   cwd "/home/#{user_name}"
   not_if "find #{wordpress}"
-  notifies :run, "execute[chmod_wp-content]", :immediately
   command <<-EOS
     tar xfz /home/#{user_name}/#{repository}
   EOS
 end
 
 execute "chmod_wp-content" do
-  action :nothing
   user "#{user_name}"
   group "#{user_name}"
+  not_if "test `stat -c '%a' /home/#{user_name}/wordpress/wp-content` -eq '777'"
   command <<-EOS
     chmod -R 777 /home/#{user_name}/wordpress/wp-content
   EOS

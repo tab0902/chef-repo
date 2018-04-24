@@ -14,13 +14,12 @@ end
 
 service 'httpd' do
   action [ :enable, :start ]
-  notifies :run, "execute[chmod_home_dir]", :immediately
 end
 
 execute "chmod_home_dir" do
-  action :nothing
   user "#{user_name}"
   group "#{user_name}"
+  not_if "test `stat -c '%a' /home/#{user_name}` -eq '755'"
   command <<-EOS
     chmod 755 /home/#{user_name}
   EOS
