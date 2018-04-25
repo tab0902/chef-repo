@@ -3,6 +3,10 @@ default['django']['packages'] = {
     pkg: "django",
     dir: "django"
   },
+  mysqlclient: {
+    pkg: "mysqlclient",
+    dir: "MySQLdb"
+  },
   pymysql: {
     pkg: "pymysql",
     dir: "pymysql"
