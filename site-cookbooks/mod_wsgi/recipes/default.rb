@@ -4,8 +4,8 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-python_conf       = node['mod_wsgi']['python_conf']
-virtual_conf      = node['mod_wsgi']['virtual_conf']
+wsgi_conf       = node['mod_wsgi']['wsgi_conf']
+vhost_conf      = node['mod_wsgi']['vhost_conf']
 user_name         = node['user']['name']
 project_name      = node['repository']['name']
 domain            = node['certbot']['domain']
@@ -16,11 +16,11 @@ certbot  = "/home/#{user_name}/certbot"
 pip      = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}/bin/pip"
 mod_wsgi = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}/lib/python#{python_version}/site-packages/mod_wsgi"
 
-template "#{python_conf}" do
+template "#{wsgi_conf}" do
   owner "root"
   group "root"
   mode 0644
-  source "python.conf.erb"
+  source "wsgi.conf.erb"
   not_if "find #{certbot}"
   action :create_if_missing
   variables({
@@ -31,11 +31,11 @@ template "#{python_conf}" do
   })
 end
 
-template "#{virtual_conf}" do
+template "#{vhost_conf}" do
   owner "root"
   group "root"
   mode 0644
-  source "virtual.conf.erb"
+  source "vhost.conf.erb"
   only_if "find #{certbot}"
   action :create_if_missing
   variables({
