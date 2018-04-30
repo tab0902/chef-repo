@@ -22,6 +22,7 @@ template "#{python_conf}" do
   mode 0644
   source "python.conf.erb"
   not_if "find #{certbot}"
+  action :create_if_missing
   variables({
     :user_name => user_name,
     :miniconda_version => miniconda_version,
@@ -36,6 +37,7 @@ template "#{virtual_conf}" do
   mode 0644
   source "virtual.conf.erb"
   only_if "find #{certbot}"
+  action :create_if_missing
   variables({
     :user_name => user_name,
     :miniconda_version => miniconda_version,
