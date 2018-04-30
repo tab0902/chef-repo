@@ -4,8 +4,8 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-wsgi_conf       = node['mod_wsgi']['wsgi_conf']
-vhost_conf      = node['mod_wsgi']['vhost_conf']
+wsgi_conf         = node['mod_wsgi']['wsgi_conf']
+vhost_conf        = node['mod_wsgi']['vhost_conf']
 user_name         = node['user']['name']
 project_name      = node['repository']['name']
 domain            = node['certbot']['domain']
