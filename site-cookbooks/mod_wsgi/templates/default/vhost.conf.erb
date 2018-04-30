@@ -3,7 +3,7 @@ NameVirtualHost *:443
 
 LoadModule wsgi_module /home/<%=@user_name%>/.pyenv/versions/miniconda3-<%=@miniconda_version%>/lib/python<%=@python_version%>/site-packages/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so
 WSGIPythonHome /home/<%=@user_name%>/.pyenv/versions/miniconda3-<%=@miniconda_version%>/
-WSGIPythonPath /home/<%=@user_name%>/<%= @project_name %>
+WSGISocketPrefix /var/run/wsgi
 
 <VirtualHost *:443>
   ServerName <%=@domain%>
@@ -13,10 +13,12 @@ WSGIPythonPath /home/<%=@user_name%>/<%= @project_name %>
   SSLCertificateKeyFile /etc/letsencrypt/live/<%=@domain%>/privkey.pem
   SSLCertificateChainFile /etc/letsencrypt/live/<%=@domain%>/chain.pem
 
+  WSGIDaemonProcess <%= @project_name %> python-path=/home/<%=@user_name%>/<%= @project_name %>
   WSGIScriptAlias / /home/<%=@user_name%>/<%= @project_name %>/<%= @project_name %>/wsgi.py
 
   <Directory "/home/<%=@user_name%>/<%= @project_name %>/<%= @project_name %>">
     <Files wsgi.py>
+      WSGIProcessGroup <%= @project_name %>
       Order allow,deny
       Allow from all
     </Files>
