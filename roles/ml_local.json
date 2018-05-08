@@ -16,6 +16,7 @@
     "recipe[pyenv]",
     "recipe[miniconda]",
     "recipe[conda]",
+    "recipe[graphviz]",
     "recipe[jupyter]"
   ]
 }
