@@ -1,23 +1,30 @@
 {
   "id": "mysql",
   "enyfar": {
-    "encrypted_data": "hp1iqF2kH5JZIOK71ZEl4TkhKq4wOJZd+dlMUOQsJod6noA=\n",
-    "iv": "QSH+8cdSlQ/3Rvu6\n",
-    "auth_tag": "+yz1YQbYVrd01f9lMGJyrA==\n",
+    "encrypted_data": "0W66VBWk+Vkf7PyisZCQ8SHhwn/eHH7wm4Z/w+arwHk3lDc=\n",
+    "iv": "cYFFt+z1NsXDkAJU\n",
+    "auth_tag": "YbJSJBZPSqTgZ1xuaAIkkA==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
   "enyfar_otaku": {
-    "encrypted_data": "RwDZRPUP9V6tR+kKzOratCi+5fHW5VwzcaUHO4uJT0OkvJ8=\n",
-    "iv": "9gqCR9apCkIi68he\n",
-    "auth_tag": "gvjg8sAru8iFlZd8IAcxMA==\n",
+    "encrypted_data": "b3ViUM4xbRfd1xPeL4kmqEdPru8++D835eVzlUgUU5LSP34=\n",
+    "iv": "NRFIH/L1TKKHBHq6\n",
+    "auth_tag": "N5FEXExMmYyID4rFwqf5lQ==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  },
+  "enybank_bot": {
+    "encrypted_data": "74z9ZcDV8Vw1CsGhGa6MixCYVDXwmzK+TT4or3Y49Z0P2Aw=\n",
+    "iv": "G8exSUIExy13bvyp\n",
+    "auth_tag": "b6OKfYD6aziUePA7+rQjFw==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
   "wp": {
-    "encrypted_data": "x1Y8L5Wk3abrDApAZvgYcYBWvMM3s2bnwV0fGCjD0Y7inGY=\n",
-    "iv": "KyaBpwcULwwURsb5\n",
-    "auth_tag": "Rw5in4l9hwsvC7HHfZ6Dlw==\n",
+    "encrypted_data": "tamcSdk6R51QqEBditNRdzkBkPV3w6Az68ercy5/Cvx6+tc=\n",
+    "iv": "4l44u/gxw+/3Yw0a\n",
+    "auth_tag": "icbxEDQBS+sMCba091ymew==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   }

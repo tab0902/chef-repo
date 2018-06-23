@@ -1,0 +1,64 @@
+{
+  "name": "enybank_bot_remote",
+  "description": "remote environment for enybank_bot",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "mysql": {
+      "db_name":"enybank_bot"
+    },
+    "django": {
+      "packages": {
+        "django": {
+          "pkg": "django",
+          "dir": "django"
+        },
+        "mysqlclient": {
+          "pkg": "mysqlclient",
+          "dir": "MySQLdb"
+        },
+        "pymysql": {
+          "pkg": "pymysql",
+          "dir": "pymysql"
+        },
+        "pillow": {
+          "pkg": "Pillow",
+          "dir": "PIL"
+        },
+        "linebot": {
+          "pkg": "line-bot-sdk",
+          "dir": "linebot"
+        },
+        "social_auth_app_django": {
+          "pkg": "social-auth-app-django",
+          "dir": "social_django"
+        }
+      }
+    },
+    "repository": {
+      "owner":"anybirth",
+      "name":"enybank_bot"
+    },
+    "certbot": {
+      "webroot":"/var/www/html",
+      "email":"sho@anybirth.co.jp"
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[user]",
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[vim]",
+    "recipe[apache]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]",
+    "recipe[repository]",
+    "recipe[certbot]",
+    "recipe[mod_wsgi]"
+  ]
+}
