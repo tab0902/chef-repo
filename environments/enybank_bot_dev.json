@@ -1,14 +1,14 @@
 {
-  "name": "enybank_bot_prd",
-  "description": "remote production environment for enybank_bot",
+  "name": "enybank_bot_dev",
+  "description": "remote development environment for enybank_bot",
   "chef_type": "environment",
   "json_class": "Chef::Environment",
   "default_attributes": {
     "user": {
-      "name":"prd"
+      "name":"dev"
     },
     "certbot": {
-      "domain":"enyfar.com"
+      "domain":"enyfar.net"
     }
   },
   "override_attributes": {
