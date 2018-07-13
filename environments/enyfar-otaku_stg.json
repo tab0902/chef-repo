@@ -5,7 +5,8 @@
   "json_class": "Chef::Environment",
   "default_attributes": {
     "user": {
-      "name":"stg"
+      "name":"stg",
+      "password": "$1$2xEr4DS0$fpdwfH9GvdmZ2EHwZK5zZ1"
     },
     "certbot": {
       "domain":"enyfar.work"

@@ -5,9 +5,10 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 user_name = node["user"]["name"]
+password = node["user"]["password"]
 
 user "#{user_name}" do
-  password "$1$2xEr4DS0$fpdwfH9GvdmZ2EHwZK5zZ1"
+  password "#{password}"
   home "/home/#{user_name}"
   manage_home true
 end
