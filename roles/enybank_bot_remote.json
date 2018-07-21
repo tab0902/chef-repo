@@ -29,6 +29,10 @@
           "pkg": "line-bot-sdk",
           "dir": "linebot"
         },
+        "stripe": {
+          "pkg": "stripe",
+          "dir": "stripe"
+        },
         "social_auth_app_django": {
           "pkg": "social-auth-app-django",
           "dir": "social_django"
