@@ -1,0 +1,57 @@
+{
+  "name": "enybank_web_local",
+  "description": "local environment for enybank_web",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "mysql": {
+      "db_name":"enybank_web"
+    },
+    "django": {
+      "packages": {
+        "django": {
+          "pkg": "django",
+          "dir": "django"
+        },
+        "mysqlclient": {
+          "pkg": "mysqlclient",
+          "dir": "MySQLdb"
+        },
+        "pymysql": {
+          "pkg": "pymysql",
+          "dir": "pymysql"
+        },
+        "pillow": {
+          "pkg": "Pillow",
+          "dir": "PIL"
+        },
+        "social_auth_app_django": {
+          "pkg": "social-auth-app-django",
+          "dir": "social_django"
+        },
+        "stripe": {
+          "pkg": "stripe",
+          "dir": "stripe"
+        }
+      }
+    },
+    "repository": {
+      "owner":"anybirth",
+      "name":"enybank_web"
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[vbox]",
+    "recipe[vim]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]",
+    "recipe[repository]"
+  ]
+}
