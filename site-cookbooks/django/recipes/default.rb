@@ -13,6 +13,7 @@ miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_versi
 pip           = "#{miniconda}/bin/pip"
 site_packages = "#{miniconda}/lib/python#{python_version}/site-packages"
 line_py       = "#{site_packages}/social_core/backends/line.py"
+user_py       = "#{site_packages}/social_core/pipeline/user.py"
 
 execute "upgrade_pip" do
   user "#{user_name}"
@@ -50,4 +51,11 @@ template "#{line_py}" do
   group "#{user_name}"
   mode 0644
   source "line.py.erb"
+end
+
+template "#{user_py}" do
+  owner "#{user_name}"
+  group "#{user_name}"
+  mode 0644
+  source "user.py.erb"
 end
