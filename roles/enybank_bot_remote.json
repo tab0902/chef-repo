@@ -45,7 +45,7 @@
     },
     "certbot": {
       "webroot":"/var/www/html",
-      "email":"sho@anybirth.co.jp"
+      "email":"mercury.brave.0902@gmail.com"
     }
   },
   "override_attributes": {
