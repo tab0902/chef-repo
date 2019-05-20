@@ -6,7 +6,7 @@
   "default_attributes": {
     "user": {
       "name":"dev",
-      "password": "$1$2xEr4DS0$fpdwfH9GvdmZ2EHwZK5zZ1"
+      "password": "$1$ZbkBdzlN$LsZbUJlKHtWGbpHz0rLrp0"
     },
     "certbot": {
       "domain":"enyfar.net"
