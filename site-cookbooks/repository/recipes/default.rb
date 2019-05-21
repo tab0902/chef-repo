@@ -13,7 +13,7 @@ git "/home/#{user_name}/#{repo_name}" do
   revision "master"
   user "#{user_name}"
   group "#{user_name}"
-  action :sync
+  action :checkout
   not_if "find /home/#{user_name}/#{repo_name}"
   notifies :run, "execute[remote_set_url]", :immediately
 end
