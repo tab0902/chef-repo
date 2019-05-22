@@ -9,7 +9,9 @@
       "password": "$1$ZbkBdzlN$LsZbUJlKHtWGbpHz0rLrp0"
     },
     "certbot": {
-      "domain":"ewewing.work"
+      "domains": {
+        "enybank_bot": "enybank-bot.ewewing.work"
+      }
     }
   },
   "override_attributes": {

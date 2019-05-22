@@ -7,14 +7,19 @@
 wsgi_conf         = node['mod_wsgi']['wsgi_conf']
 vhost_conf        = node['mod_wsgi']['vhost_conf']
 user_name         = node['user']['name']
-project_name      = node['repository']['name']
-domain            = node['certbot']['domain']
+projects          = node['repository']['repositories']
+domains           = node['certbot']['domains']
 miniconda_version = node['miniconda']['version']
 python_version    = node['miniconda']['python']['version']
 
 certbot  = "/home/#{user_name}/certbot"
 pip      = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}/bin/pip"
 mod_wsgi = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}/lib/python#{python_version}/site-packages/mod_wsgi"
+
+project_names = []
+projects.each do |project|
+  project_names.push(project['name'])
+end
 
 template "#{wsgi_conf}" do
   owner "root"
@@ -27,7 +32,7 @@ template "#{wsgi_conf}" do
     :user_name => user_name,
     :miniconda_version => miniconda_version,
     :python_version => python_version,
-    :project_name => project_name
+    :project_name => project_names[0]
   })
 end
 
@@ -42,8 +47,8 @@ template "#{vhost_conf}" do
     :user_name => user_name,
     :miniconda_version => miniconda_version,
     :python_version => python_version,
-    :project_name => project_name,
-    :domain => domain
+    :project_names => project_names,
+    :domains => domains
   })
 end
 

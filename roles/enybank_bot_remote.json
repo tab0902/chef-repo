@@ -5,7 +5,9 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "mysql": {
-      "db_name":"enybank_bot"
+      "db_names": [
+        "enybank_bot"
+      ]
     },
     "django": {
       "packages": {
@@ -40,8 +42,12 @@
       }
     },
     "repository": {
-      "owner":"anybirth",
-      "name":"enybank_bot"
+      "repositories": [
+        {
+          "owner":"anybirth",
+          "name":"enybank_bot"
+        }
+      ]
     },
     "certbot": {
       "webroot":"/var/www/html",

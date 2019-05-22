@@ -9,7 +9,9 @@
       "password": "$1$vX9/nyHV$xh0EV83VmlM0s84SSFrDp0"
     },
     "certbot": {
-      "domain":"optpos.site"
+      "domains": {
+        "wp": "ewewing.com"
+      }
     }
   },
   "override_attributes": {

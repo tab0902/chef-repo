@@ -5,7 +5,9 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "mysql": {
-      "db_name":"enyfar"
+      "db_names": [
+        "enyfar"
+      ]
     },
     "django": {
       "packages": {
@@ -56,8 +58,12 @@
       }
     },
     "repository": {
-      "owner":"anybirth",
-      "name":"enyfar"
+      "repositories": [
+        {
+          "owner":"anybirth",
+          "name":"enyfar"
+        }
+      ]
     },
     "certbot": {
       "webroot":"/var/www/html",

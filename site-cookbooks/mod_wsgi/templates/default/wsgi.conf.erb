@@ -1,26 +1,26 @@
 LoadModule wsgi_module /home/<%=@user_name%>/.pyenv/versions/miniconda3-<%=@miniconda_version%>/lib/python<%=@python_version%>/site-packages/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so
-WSGIPythonHome /home/<%= @user_name %>/.pyenv/versions/miniconda3-<%= @miniconda_version %>/
+WSGIPythonHome /home/<%=@user_name%>/.pyenv/versions/miniconda3-<%= @miniconda_version %>/
 WSGISocketPrefix /var/run/wsgi
-WSGIDaemonProcess enyfar_image python-path=/home/<%=@user_name%>/<%= @project_name %>
-WSGIScriptAlias / /home/<%= @user_name %>/<%= @project_name %>/<%= @project_name %>/wsgi.py
+WSGIDaemonProcess <%=@project_name%> python-path=/home/<%=@user_name%>/<%=@project_name%>
+WSGIScriptAlias / /home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/wsgi.py
 
-<Directory "/<%= @user_name %>/<%= @user_name %>/<%= @project_name %>/<%= @project_name %>">
+<Directory "/<%=@user_name%>/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>">
   <Files wsgi.py>
-    WSGIProcessGroup <%= @project_name %>
+    WSGIProcessGroup <%=@project_name%>
     Order allow,deny
     Allow from all
   </Files>
 </Directory>
 
-Alias /static/ /home/<%= @user_name %>/<%= @project_name %>/<%= @project_name %>/static/
-Alias /media/ /home/<%= @user_name %>/<%= @project_name %>/<%= @project_name %>/media/
+Alias /static/ /home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/static/
+Alias /media/ /home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/media/
 
-<Directory "/home/<%= @user_name %>/<%= @project_name %>/<%= @project_name %>/static">
+<Directory "/home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/static">
   Order allow,deny
   Allow from all
 </Directory>
 
-<Directory "/home/<%= @user_name %>/<%= @project_name %>/<%= @project_name %>/media">
+<Directory "/home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/media">
   Order allow,deny
   Allow from all
 </Directory>

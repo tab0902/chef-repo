@@ -5,7 +5,9 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "mysql": {
-      "db_name":"wp"
+      "db_names": [
+        "wp"
+      ]
     }
   },
   "override_attributes": {

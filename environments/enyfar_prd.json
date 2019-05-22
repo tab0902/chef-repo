@@ -9,7 +9,9 @@
       "password": "$1$2xEr4DS0$fpdwfH9GvdmZ2EHwZK5zZ1"
     },
     "certbot": {
-      "domain":"enyfar.com"
+      "domains": {
+        "enybank_bot": "enyfar.com"
+      }
     }
   },
   "override_attributes": {

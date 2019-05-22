@@ -5,7 +5,7 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 repository = node['mysql']['repository']
-db_name    = node["mysql"]["db_name"]
+db_names   = node["mysql"]["db_names"]
 db_host    = node['mysql']['db_host']
 charset    = node['mysql']['charset']
 collate    = node['mysql']['collate']
@@ -33,14 +33,14 @@ service 'mysqld' do
 end
 
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
-password = data_bag["#{db_name}"]
+password = data_bag["#{user_name}"]
 
 template "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   owner "root"
   group "root"
   mode 0644
   source "secure_install.sql.erb"
-  not_if "mysql -u root -p#{password} -D #{db_name}"
+  not_if "mysql -u root -p#{password} -D #{db_names[0]}"
   notifies :run, "execute[secure_install]", :immediately
   variables({
     :password => password,
@@ -59,18 +59,15 @@ file "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   action :delete
 end
 
-data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
-password = data_bag["#{db_name}"]
-
 template "#{Chef::Config[:file_cache_path]}/create_db.sql" do
   owner "root"
   group "root"
   mode 0644
   source "create_db.sql.erb"
-  not_if "mysql -u root -p#{password} -D #{db_name}"
+  not_if "mysql -u root -p#{password} -D #{db_names[0]}"
   notifies :run, "execute[create_db]", :immediately
   variables({
-    :db_name => db_name,
+    :db_names => db_names,
     :db_host => db_host,
     :user_name => user_name,
     :password => password,
@@ -89,9 +86,6 @@ end
 file "#{Chef::Config[:file_cache_path]}/create_db.sql" do
   action :delete
 end
-
-data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
-password = data_bag["#{db_name}"]
 
 template "#{my_cnf}" do
   owner "root"

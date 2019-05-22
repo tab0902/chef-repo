@@ -5,7 +5,9 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "mysql": {
-      "db_name":"enybank_web"
+      "db_names": [
+        "enybank_web"
+      ]
     },
     "django": {
       "packages": {
@@ -36,8 +38,12 @@
       }
     },
     "repository": {
-      "owner":"anybirth",
-      "name":"enybank_web"
+      "repositories": [
+        {
+          "owner":"anybirth",
+          "name":"enybank_web"
+        }
+      ]
     }
   },
   "override_attributes": {

@@ -1,37 +1,58 @@
 {
   "id": "mysql",
+  "dev": {
+    "encrypted_data": "PPAqqH5Xfzt56kDllgEcJhl+2XDqj7cOM2dGDLLOBolwOLU=\n",
+    "iv": "M3c675ztSXWKKFhe\n",
+    "auth_tag": "PHkk0xpEa0c46UYPaybmqw==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  },
+  "vagrant": {
+    "encrypted_data": "uxJd/AGHURpp0I+zBGuamE2/lO3K4xoZyeQRYsBh8MkDjHA=\n",
+    "iv": "P2csdB1nF8WYCbAk\n",
+    "auth_tag": "AWVosSquUgGKFgw40nDRhA==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  },
   "enyfar": {
-    "encrypted_data": "7zvURNzvouyt7XJiCo4+l+aYYQJHFDdyLvyDNFDCS4OawSI=\n",
-    "iv": "FLYkCoKzozgser/x\n",
-    "auth_tag": "c4SiQcENVvHR18kynyMzEA==\n",
+    "encrypted_data": "aQZbQ8++L5OiSGoFCvFA5Yy5AlscAy/Mqe6mxrelpooichg=\n",
+    "iv": "MhFx9u2L4y4xDmzk\n",
+    "auth_tag": "EjNcfDsK+udCpTDtSrSW0Q==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
   "enyfar_otaku": {
-    "encrypted_data": "ApxfdFTe1Uou0dqcJp/R3ZhJSpRldTocQ1r5O8BtjhcnYzM=\n",
-    "iv": "2mtj5NXDim00pzh0\n",
-    "auth_tag": "S26XcMx48Mb5AtA6I6Rp/g==\n",
+    "encrypted_data": "asNAQHZzOjPsh5puvfv6mjOov9WHkNqgW4DLXfY5wenDoJU=\n",
+    "iv": "/zptMoSTj2u4LeKW\n",
+    "auth_tag": "KJFiV/MlVrsDlXbRnutF/w==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
   "enybank_bot": {
-    "encrypted_data": "lgTfPnUN+slzSoxKrblmKXEZXRj8IWA9bU5n/YXjbhTFxNk=\n",
-    "iv": "LNuiXoY/AuwPhtOC\n",
-    "auth_tag": "wxIdCWdF8PQ+vWd+zOYUJA==\n",
+    "encrypted_data": "K7Z94A8rTdX7noZ/61r9PMCOPVkZ4Utu+bAS7uunO/MFJG0=\n",
+    "iv": "nRNo4baR7Gsha4Gh\n",
+    "auth_tag": "hEr0XDAuavUE7RAboY0ziA==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
   "enybank_web": {
-    "encrypted_data": "ZgTcEP1tiUT/daIxREhIfNjf7qBSOTQP/wUiPZKD1PukHqU=\n",
-    "iv": "Kl/ewt4o1PLnDHj+\n",
-    "auth_tag": "e4t0KG8OlUAucG8u2ESYOg==\n",
+    "encrypted_data": "+zrGUULbss/SUNjt5BXonlLyE4JLZNBfuUD94HqBiAPu7Eo=\n",
+    "iv": "VneQFXJLI6GcNw11\n",
+    "auth_tag": "sfbUCAeoN/2J6yqgSuXCSQ==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  },
+  "isekai_shokudo": {
+    "encrypted_data": "vNILJKkP5mY7FXlu1DbxRFA8MB61uTrY2SrTXKPettVwv78=\n",
+    "iv": "jbZlhMWju2M/Fmwn\n",
+    "auth_tag": "9sfz2tVWtbuRNszakSM3Eg==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
   "wp": {
-    "encrypted_data": "B/E7jjNKnEQdfOFZuJbZ2nSchP/Uf9FZO+2om1RHCRc5F5A=\n",
-    "iv": "dvH9VUF9P4xR97JT\n",
-    "auth_tag": "fTvHLgoQE165RZJqIUEuEQ==\n",
+    "encrypted_data": "s5EiPDVuyoppcq6tsIQXf6yctanPYTEmF29k4iQBsVZAXa8=\n",
+    "iv": "NPGiaGODE4XTg6Su\n",
+    "auth_tag": "XTmyggJTZ6nOQi/UORYsmw==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   }
