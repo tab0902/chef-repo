@@ -1,0 +1,46 @@
+{
+  "name": "django_dev",
+  "description": "remote development environment for Django projects",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "user": {
+      "name":"dev",
+      "password": "$1$ZbkBdzlN$LsZbUJlKHtWGbpHz0rLrp0"
+    },
+    "mysql": {
+      "db_names": [
+        "enybank_web",
+        "enybank_bot",
+        "isekai_shokudo"
+      ]
+    },
+    "repository": {
+      "repositories": [
+        {
+          "owner":"anybirth",
+          "name":"enybank_web"
+        },
+        {
+          "owner":"anybirth",
+          "name":"enybank_bot"
+        },
+        {
+          "owner":"tab0902",
+          "name":"isekai_shokudo"
+        }
+      ]
+    },
+    "certbot": {
+      "domains": {
+        "enybank_web": "enybank.ewewing.work",
+        "enybank_bot": "enybank-bot.ewewing.work",
+        "isekai_shokudo": "isekai-shokudo.ewewing.work"
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}
