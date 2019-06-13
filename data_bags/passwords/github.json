@@ -1,0 +1,10 @@
+{
+  "id": "github",
+  "tab0902": {
+    "encrypted_data": "VritgcxW+dDOLKK6Ij6HmIGzpq448Nwja1Ul5P8ahahx2rI=\n",
+    "iv": "uKMThqLQ5WJekrov\n",
+    "auth_tag": "yvt7MDcg+lOjVlNKoZ+hGQ==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  }
+}

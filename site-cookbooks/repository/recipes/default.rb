@@ -4,15 +4,25 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
+require 'cgi'
+
 user_name    = node['user']['name']
 repositories = node['repository']['repositories']
+
+data_bag = Chef::EncryptedDataBagItem.load('passwords','github')
 
 repositories.each do |repository|
   repo_owner = repository['owner']
   repo_name  = repository['name']
+  repo_url   = "https://github.com/#{repo_owner}/#{repo_name}.git"
+
+  if data_bag.to_hash.has_key?("#{repo_owner}") then
+    password = CGI.escape(data_bag["#{repo_owner}"])
+    repo_url = "https://#{repo_owner}:#{password}@github.com/#{repo_owner}/#{repo_name}.git"
+  end
 
   git "/home/#{user_name}/#{repo_name}" do
-    repository "https://github.com/#{repo_owner}/#{repo_name}.git"
+    repository "#{repo_url}"
     revision "master"
     user "#{user_name}"
     group "#{user_name}"
