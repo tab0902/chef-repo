@@ -24,6 +24,7 @@ repositories.each do |repository|
     user "#{user_name}"
     group "#{user_name}"
     cwd "/home/#{user_name}/#{repo_name}"
+    not_if "find /home/#{user_name}/#{repo_name}/vendor"
     command <<-EOS
       #{composer} install -n
     EOS
