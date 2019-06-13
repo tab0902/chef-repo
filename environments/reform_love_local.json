@@ -1,0 +1,28 @@
+{
+  "name": "reform_love_local",
+  "description": "local development environment for reform_love",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "user": {
+      "name":"vagrant"
+    },
+    "mysql": {
+      "db_names": [
+        "reform_love"
+      ]
+    },
+    "repository": {
+      "repositories": [
+        {
+          "owner":"tab0902",
+          "name":"reform_love"
+        }
+      ]
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}

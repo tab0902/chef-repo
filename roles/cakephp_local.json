@@ -1,0 +1,24 @@
+{
+  "name": "cakephp_local",
+  "description": "local environment for cakephp",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[remi]",
+    "recipe[vbox]",
+    "recipe[vim]",
+    "recipe[apache]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[php]",
+    "recipe[repository]",
+    "recipe[composer]",
+    "recipe[cakephp]"
+  ]
+}
