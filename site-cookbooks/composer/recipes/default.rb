@@ -4,7 +4,7 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-source_uri  = node['composer']['install_dir']
+source_uri  = node['composer']['source_uri']
 install_dir = node['composer']['install_dir']
 file_name   = node['composer']['file_name']
 
