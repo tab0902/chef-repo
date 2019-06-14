@@ -4,38 +4,6 @@
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "django": {
-      "packages": {
-        "django": {
-          "pkg": "django",
-          "dir": "django"
-        },
-        "mysqlclient": {
-          "pkg": "mysqlclient",
-          "dir": "MySQLdb"
-        },
-        "pymysql": {
-          "pkg": "pymysql",
-          "dir": "pymysql"
-        },
-        "pillow": {
-          "pkg": "Pillow",
-          "dir": "PIL"
-        },
-        "linebot": {
-          "pkg": "line-bot-sdk",
-          "dir": "linebot"
-        },
-        "stripe": {
-          "pkg": "stripe",
-          "dir": "stripe"
-        },
-        "social_auth_app_django": {
-          "pkg": "social-auth-app-django",
-          "dir": "social_django"
-        }
-      }
-    },
     "certbot": {
       "webroot":"/var/www/html",
       "email":"mercury.brave.0902@gmail.com"
