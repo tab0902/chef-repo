@@ -34,6 +34,30 @@
         "stripe": {
           "pkg": "stripe",
           "dir": "stripe"
+        },
+        "paypalrestsdk": {
+          "pkg:": "paypalrestsdk",
+          "dir": "paypalrestsdk"
+        },
+        "twitter": {
+          "pkg": "twitter",
+          "dir": "twitter"
+        },
+        "shippo": {
+          "pkg": "shippo",
+          "dir": "shippo"
+        },
+        "bottlenose": {
+          "pkg": "bottlenose",
+          "dir": "bottlenose"
+        },
+        "beautifulsoup4": {
+          "pkg": "beautifulsoup4",
+          "dir": "bs4"
+        },
+        "google_cloud_translate": {
+          "pkg": "google-cloud-translate",
+          "dir": "google/cloud/translate.py"
         }
       }
     },
