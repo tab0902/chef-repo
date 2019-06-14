@@ -1,1 +1,1 @@
-default['remi']['repository'] = "remi-release-6.rpm"
+default['remi']['repository'] = "remi-release-#{node['platform_version'].to_i}.rpm"
