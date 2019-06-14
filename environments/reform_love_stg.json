@@ -1,0 +1,29 @@
+{
+  "name": "reform_love_stg",
+  "description": "remote staging environment for reform_love",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "user": {
+      "name":"reform_love_stg",
+      "password": "$1$URiBuuEU$BQl.YCEIL1b2oYCA3yBQr."
+    },
+    "mysql": {
+      "db_names": [
+        "reform_love"
+      ]
+    },
+    "repository": {
+      "repositories": [
+        {
+          "owner":"tab0902",
+          "name":"reform_love"
+        }
+      ]
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}
