@@ -14,7 +14,7 @@ git          = "#{install_dir}/bin/git"
 
 node['git']['packages']['pre'].each do |item|
   package "#{item}" do
-    [ :install, :upgrade ]
+    action [ :install, :upgrade ]
   end
 end
 
@@ -53,6 +53,6 @@ end
 
 node['git']['packages']['post'].each do |item|
   package "#{item}" do
-    [ :install, :upgrade ]
+    action [ :install, :upgrade ]
   end
 end
