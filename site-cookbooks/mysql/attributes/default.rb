@@ -1,4 +1,3 @@
-default['mysql']['repository'] = "mysql-community-release-el6-7.noarch.rpm"
 default['mysql']['db_host'] = "localhost"
 default['mysql']['charset'] = "utf8"
 default['mysql']['collate'] = "utf8_general_ci"

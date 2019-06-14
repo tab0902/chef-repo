@@ -5,9 +5,16 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "mysql": {
+      "repository": "mysql-community-release-el6-7.noarch.rpm",
       "db_names": [
         "wp"
       ]
+    },
+    "git": {
+      "version": "2.16.2"
+    },
+    "php": {
+      "version": "72"
     }
   },
   "override_attributes": {

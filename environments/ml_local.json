@@ -7,6 +7,15 @@
     "user": {
       "name":"vagrant"
     },
+    "git": {
+      "version": "2.22.0"
+    },
+    "miniconda": {
+      "version": "4.3.30"
+      "python": {
+        "version": "3.6"
+      }
+    },
     "conda": {
       "packages": {
         "numpy": {

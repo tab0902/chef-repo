@@ -9,9 +9,16 @@
       "password": "$1$URiBuuEU$BQl.YCEIL1b2oYCA3yBQr."
     },
     "mysql": {
+      "repository": "mysql-community-release-el6-7.noarch.rpm",
       "db_names": [
         "reform_love"
       ]
+    },
+    "git": {
+      "version": "2.22.0"
+    },
+    "php": {
+      "version": "73"
     },
     "repository": {
       "repositories": [

@@ -9,11 +9,21 @@
       "password": "$1$ZbkBdzlN$LsZbUJlKHtWGbpHz0rLrp0"
     },
     "mysql": {
+      "repository": "mysql-community-release-el6-7.noarch.rpm",
       "db_names": [
         "enybank_web",
         "enybank_bot",
         "isekai_shokudo"
       ]
+    },
+    "git": {
+      "version": "2.21.0"
+    },
+    "miniconda": {
+      "version": "4.3.30"
+      "python": {
+        "version": "3.6"
+      }
     },
     "repository": {
       "repositories": [
