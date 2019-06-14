@@ -43,10 +43,10 @@ execute "git_settings" do
   environment "HOME" => "/home/#{user_name}"
   not_if "find /home/#{user_name}/.ssh/id_rsa"
   command <<-EOS
-    git config --global merge.ff false
-    git config --global pull.ff only
-    git config --global push.default current
-    git config --global core.whitespace cr-at-eol
+    #{git} config --global merge.ff false
+    #{git} config --global pull.ff only
+    #{git} config --global push.default current
+    #{git} config --global core.whitespace cr-at-eol
     ssh-keygen -f /home/#{user_name}/.ssh/id_rsa -t rsa -N ""
   EOS
 end
