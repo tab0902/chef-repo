@@ -6,9 +6,10 @@
 
 user_name         = node['user']['name']
 miniconda_version = node['miniconda']['version']
+python_version    = node['miniconda']['python']['version']
 
 pyenv     = "/home/#{user_name}/.pyenv/bin/pyenv"
-miniconda = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}"
+miniconda = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}"
 
 execute "install_miniconda" do
   user "#{user_name}"
@@ -16,10 +17,10 @@ execute "install_miniconda" do
   environment "HOME" => "/home/#{user_name}"
   not_if "find #{miniconda}"
   command <<-EOS
-    #{pyenv} install miniconda3-#{miniconda_version}
+    #{pyenv} install miniconda#{python_version.to_i}-#{miniconda_version}
     #{pyenv} rehash
-    #{pyenv} global miniconda3-#{miniconda_version}
-    echo 'export PATH="$PYENV_ROOT/versions/miniconda3-#{miniconda_version}/bin/:$PATH"' >> ~/.bashrc
+    #{pyenv} global miniconda#{python_version.to_i}-#{miniconda_version}
+    echo 'export PATH="$PYENV_ROOT/versions/miniconda#{python_version.to_i}-#{miniconda_version}/bin/:$PATH"' >> ~/.bashrc
     source ~/.bashrc
   EOS
 end

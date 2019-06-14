@@ -1,5 +1,5 @@
-LoadModule wsgi_module /home/<%=@user_name%>/.pyenv/versions/miniconda3-<%=@miniconda_version%>/lib/python<%=@python_version%>/site-packages/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so
-WSGIPythonHome /home/<%=@user_name%>/.pyenv/versions/miniconda3-<%= @miniconda_version %>/
+LoadModule wsgi_module /home/<%=@user_name%>/.pyenv/versions/miniconda<%=@python_version.to_i%>-<%=@miniconda_version%>/lib/python<%=@python_version%>/site-packages/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so
+WSGIPythonHome /home/<%=@user_name%>/.pyenv/versions/miniconda<%=@python_version.to_i%>-<%= @miniconda_version %>/
 WSGISocketPrefix /var/run/wsgi
 WSGIDaemonProcess <%=@project_name%> python-path=/home/<%=@user_name%>/<%=@project_name%>
 WSGIScriptAlias / /home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/wsgi.py

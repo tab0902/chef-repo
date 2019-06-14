@@ -8,7 +8,7 @@ user_name         = node['user']['name']
 miniconda_version = node['miniconda']['version']
 python_version    = node['miniconda']['python']['version']
 
-miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}"
+miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}"
 pip           = "#{miniconda}/bin/pip"
 site_packages = "#{miniconda}/lib/python#{python_version}/site-packages"
 

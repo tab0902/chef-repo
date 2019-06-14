@@ -9,7 +9,7 @@ miniconda_version = node['miniconda']['version']
 python_version    = node['miniconda']['python']['version']
 packages          = node['django']['packages']
 
-miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}"
+miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}"
 pip           = "#{miniconda}/bin/pip"
 site_packages = "#{miniconda}/lib/python#{python_version}/site-packages"
 line_py       = "#{site_packages}/social_core/backends/line.py"

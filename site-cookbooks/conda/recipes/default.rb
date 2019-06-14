@@ -9,7 +9,7 @@ miniconda_version = node['miniconda']['version']
 python_version    = node['miniconda']['python']['version']
 packages          = node['conda']['packages']
 
-miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}"
+miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}"
 conda         = "#{miniconda}/bin/conda"
 site_packages = "#{miniconda}/lib/python#{python_version}/site-packages"
 

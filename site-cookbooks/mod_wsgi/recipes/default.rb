@@ -13,8 +13,8 @@ miniconda_version = node['miniconda']['version']
 python_version    = node['miniconda']['python']['version']
 
 certbot  = "/home/#{user_name}/certbot"
-pip      = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}/bin/pip"
-mod_wsgi = "/home/#{user_name}/.pyenv/versions/miniconda3-#{miniconda_version}/lib/python#{python_version}/site-packages/mod_wsgi"
+pip      = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}/bin/pip"
+mod_wsgi = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}/lib/python#{python_version}/site-packages/mod_wsgi"
 
 project_names = []
 projects.each do |project|
