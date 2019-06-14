@@ -35,6 +35,16 @@ execute "install_git" do
     make all
     make install
   EOS
+  notifies :run, "execute[rehash]", :immediately
+end
+
+execute "rehash" do
+  action :nothing
+  user "#{user_name}"
+  group "#{user_name}"
+  command <<-EOS
+    hash -r
+  EOS
 end
 
 execute "git_settings" do
