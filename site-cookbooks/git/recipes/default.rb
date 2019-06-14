@@ -9,6 +9,9 @@ source_uri  = node['git']['source_uri']
 install_dir = node['git']['install_dir']
 user_name   = node['user']['name']
 
+download_dir = "#{install_dir}/src"
+git          = "#{install_dir}/bin/git"
+
 node['git']['packages'].each do |item|
   package "#{item}" do
     [ :install, :upgrade ]
@@ -22,13 +25,13 @@ end
 execute "install_git" do
   user "root"
   group "root"
-  not_if "find #{install_dir}/git-#{version}"
+  not_if "find #{download_dir}/git-#{version}"
   command <<-EOS
-    cd #{install_dir}
-    tar xfz #{Chef::Config[:file_cache_path]}/git-#{version}.tar.gz -C #{install_dir}
-    cd #{install_dir}/git-#{version}
+    cd #{download_dir}
+    tar xfz #{Chef::Config[:file_cache_path]}/git-#{version}.tar.gz -C #{download_dir}
+    cd #{download_dir}/git-#{version}
     make configure
-    ./configure --prefix=/usr
+    ./configure --prefix=#{install_dir}
     make all
     make install
   EOS
