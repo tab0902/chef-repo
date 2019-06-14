@@ -12,7 +12,7 @@ user_name   = node['user']['name']
 download_dir = "#{install_dir}/src"
 git          = "#{install_dir}/bin/git"
 
-node['git']['packages']['pre'].each do |item|
+node['git']['packages'].each do |item|
   package "#{item}" do
     action [ :install, :upgrade ]
   end
@@ -59,10 +59,4 @@ execute "git_settings" do
     #{git} config --global core.whitespace cr-at-eol
     ssh-keygen -f /home/#{user_name}/.ssh/id_rsa -t rsa -N ""
   EOS
-end
-
-node['git']['packages']['post'].each do |item|
-  package "#{item}" do
-    action [ :install, :upgrade ]
-  end
 end
