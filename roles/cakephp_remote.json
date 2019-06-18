@@ -8,6 +8,7 @@
   "override_attributes": {
   },
   "run_list": [
+    "recipe[user]",
     "recipe[yum]",
     "recipe[epel]",
     "recipe[remi]",
