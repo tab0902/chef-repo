@@ -25,7 +25,7 @@ end
 execute "install_git" do
   user "root"
   group "root"
-  not_if "find #{download_dir}/git-#{version}"
+  not_if "find #{git}"
   command <<-EOS
     cd #{download_dir}
     tar xfz #{Chef::Config[:file_cache_path]}/git-#{version}.tar.gz -C #{download_dir}
