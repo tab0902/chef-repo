@@ -11,6 +11,7 @@ user "#{user_name}" do
   password "#{password}"
   home "/home/#{user_name}"
   manage_home true
+  not_if "getent passwd #{user_name}"
 end
 
 group 'wheel' do
