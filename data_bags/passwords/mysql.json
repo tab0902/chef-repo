@@ -1,58 +1,37 @@
 {
   "id": "mysql",
-  "dev": {
-    "encrypted_data": "UwPKU8e1NbMWXlQZCyy3LvDzVBj52r4/BwhlxgK9zRV/Lso=\n",
-    "iv": "Ci3uARp2/h5woW//\n",
-    "auth_tag": "8mItpE4c0D5HUXFxHDgyvQ==\n",
+  "django_dev": {
+    "encrypted_data": "L4VUE7n0vriJ5N+PRzUvDpKAu6CbKqTr2MiyxIck+qetVUs=\n",
+    "iv": "yDAs0ZLEcPRHu6kA\n",
+    "auth_tag": "0Q7m2g2txl+GWSBjmLxR8g==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
-  "vagrant": {
-    "encrypted_data": "qFILS9KyPrPUEBjvnPAsKTFEa5JMvqmcGSUj3JU2E4KTryg=\n",
-    "iv": "6iynnL0bxc63t+Tb\n",
-    "auth_tag": "kRL7Fn4493L2uxQr0TT6cA==\n",
+  "enybank_web_local": {
+    "encrypted_data": "a6mAPxZuwq49dufMeTfKnERLl8NroeQakPwFjsVyAYc8TOw=\n",
+    "iv": "ZrbxYEW0fwiPO/Kz\n",
+    "auth_tag": "V7uR2KcFr+FNAo5qoM59zg==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
-  "enyfar": {
-    "encrypted_data": "8gVIC8bKs0eLhW+HfZfZ9YylmWRERcCP71WGuCgWpUolP9M=\n",
-    "iv": "DVd8sxOgOVBTW1e0\n",
-    "auth_tag": "cOMuxaYkWbYQilt0cqXNOQ==\n",
+  "reform_love_local": {
+    "encrypted_data": "s6nYppSmRS2zP4/TQYm+lZeKk1xETnskep7JDjSa4INAucI=\n",
+    "iv": "857t7Zh04UgFoJ85\n",
+    "auth_tag": "wzXpUqRoeFwTxRmLBYqPyA==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
-  "enyfar_otaku": {
-    "encrypted_data": "/ySU257CnzDjq1lwZwsgDgxjw1KUhqGrEoLZUska0PYtNi8=\n",
-    "iv": "umyRVz6Q6AQxeuxW\n",
-    "auth_tag": "oCQBMCaRS8C2F2RpdQGwPg==\n",
+  "reform_love_stg": {
+    "encrypted_data": "zrkpsePxW9MciApjEj7HCG+oUozfnWoJ/mfR+k8mwtLuCxE=\n",
+    "iv": "PcBLHOTe8T7U2ZNb\n",
+    "auth_tag": "C7GDPTaLE8Hl8dnbCS/VmA==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   },
-  "enybank_bot": {
-    "encrypted_data": "CxsS11afVZfBXR1r9m+ZILYpQ8DflOoAkllxiALhCmfzYkQ=\n",
-    "iv": "dWFu7HjXCXDpm7aa\n",
-    "auth_tag": "BizNkExeVvgko0FRQNcdRQ==\n",
-    "version": 3,
-    "cipher": "aes-256-gcm"
-  },
-  "enybank_web": {
-    "encrypted_data": "37tt8M07K6B9dOyr1ujIE8H8v9iDHsv/cxwEy9y8JK36HhA=\n",
-    "iv": "aMtIaTnCiVBXjhTD\n",
-    "auth_tag": "eplktBeWhd6ZccZpOpW92w==\n",
-    "version": 3,
-    "cipher": "aes-256-gcm"
-  },
-  "isekai_shokudo": {
-    "encrypted_data": "wdqpigj2Xl97HzJQn/XoL92oBu8DlE1jBWRY6KdbK8eOlEE=\n",
-    "iv": "iKBzm9WVea9zaHwI\n",
-    "auth_tag": "Qo/YW8ms7wenrezG8++0IQ==\n",
-    "version": 3,
-    "cipher": "aes-256-gcm"
-  },
-  "wp": {
-    "encrypted_data": "bvc8t69aaZic/HnUMxvFk0lx/Gq6PZF6im7pLykz8xKZ+gw=\n",
-    "iv": "wNZmv1jtQq3N6PEc\n",
-    "auth_tag": "aKSua+uXx2EVADyBNr6uEw==\n",
+  "wp_local": {
+    "encrypted_data": "+DmMeUXWEYMEXlOQoQgqu47/OA2b8SC1WCD6Hy7LhjheYH4=\n",
+    "iv": "DtUKH6686akLcZsF\n",
+    "auth_tag": "Eq0UWFOIYTyU3/2QlsSHkw==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
   }

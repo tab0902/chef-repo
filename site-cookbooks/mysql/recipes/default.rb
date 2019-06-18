@@ -4,13 +4,14 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-repository = node['mysql']['repository']
-db_names   = node["mysql"]["db_names"]
-db_host    = node['mysql']['db_host']
-charset    = node['mysql']['charset']
-collate    = node['mysql']['collate']
-my_cnf     = node['mysql']['my_cnf']
-user_name  = node["user"]["name"]
+repository  = node['mysql']['repository']
+db_names    = node["mysql"]["db_names"]
+db_host     = node['mysql']['db_host']
+charset     = node['mysql']['charset']
+collate     = node['mysql']['collate']
+my_cnf      = node['mysql']['my_cnf']
+user_name   = node["user"]["name"]
+environment = node.chef_environment
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{repository}" do
   source "http://repo.mysql.com/#{repository}"
@@ -33,7 +34,7 @@ service 'mysqld' do
 end
 
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
-password = data_bag["#{user_name}"]
+password = data_bag["#{environment}"]
 
 template "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   owner "root"
