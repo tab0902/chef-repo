@@ -5,7 +5,7 @@
   "json_class": "Chef::Environment",
   "default_attributes": {
     "user": {
-      "name":"reform_love_stg",
+      "name":"centos",
       "password": "$1$URiBuuEU$BQl.YCEIL1b2oYCA3yBQr."
     },
     "mysql": {
