@@ -48,6 +48,7 @@ template "#{wordpress}/wp-config.php" do
   group "#{user_name}"
   mode 0644
   source "wp-config.php.erb"
+  action :create_if_missing
   variables({
     :db_name => db_name,
     :user_name => user_name,
