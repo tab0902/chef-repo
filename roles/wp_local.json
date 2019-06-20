@@ -7,7 +7,7 @@
     "mysql": {
       "repository": "mysql-community-release-el6-7.noarch.rpm",
       "db_names": [
-        "wp"
+        "ewewing"
       ]
     },
     "git": {
