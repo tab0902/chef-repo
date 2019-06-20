@@ -5,11 +5,12 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 user_name  = node['user']['name']
-db_name    = node['mysql']['db_name']
+db_name    = node["mysql"]["db_names"][0]
 db_host    = node['mysql']['db_host']
 charset    = node['mysql']['charset']
 repository = node['wordpress']['repository']
 httpd_conf = node['wordpress']['httpd_conf']
+environment = node.chef_environment
 
 wordpress = "/home/#{user_name}/wordpress"
 
@@ -40,7 +41,7 @@ execute "chmod_wp-content" do
 end
 
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
-password = data_bag["#{db_name}"]
+password = data_bag["#{environment}"]
 
 template "#{wordpress}/wp-config.php" do
   owner "#{user_name}"
