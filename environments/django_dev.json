@@ -20,7 +20,7 @@
       "version": "2.21.0"
     },
     "miniconda": {
-      "version": "4.3.30"
+      "version": "4.3.30",
       "python": {
         "version": "3.6"
       }
