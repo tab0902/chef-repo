@@ -1,0 +1,17 @@
+{
+  "id": "port",
+  "ewewing_django_mock": {
+    "encrypted_data": "MCo48N0aKZ1p4V93Pe7ZOZngM8B5lqvh\n",
+    "iv": "xUw1WQ4ahBipiA/S\n",
+    "auth_tag": "Ubr20lusraLeMLEmAut2yw==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  },
+  "reform_love_stg": {
+    "encrypted_data": "BQ6IZZINCMiSlil9qpaTw83QP1K2vBoN\n",
+    "iv": "jlkCeJoljrknazrt\n",
+    "auth_tag": "HWMIwdxqN9pbB+L/GDiGzA==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  }
+}

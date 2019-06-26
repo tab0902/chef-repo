@@ -10,6 +10,7 @@
   "run_list": [
     "recipe[selinux]",
     "recipe[swap]",
+    "recipe[sshd]",
     "recipe[yum]",
     "recipe[epel]",
     "recipe[remi]",
