@@ -1,0 +1,92 @@
+{
+  "name": "ewewing_django_mock",
+  "description": "mock env for ewewing_django",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "swap": {
+      "path": "/swapfile",
+      "size": 1024
+    },
+    "user": {
+      "name":"django_mock"
+    },
+    "mysql": {
+      "repository": "mysql-community-release-el6-7.noarch.rpm",
+      "db_names": [
+        "enybank_web",
+        "enybank_bot",
+        "isekai_shokudo"
+      ]
+    },
+    "git": {
+      "version": "2.22.0"
+    },
+    "miniconda": {
+      "version": "4.3.30",
+      "python": {
+        "version": "3.6"
+      }
+    },
+    "django": {
+      "packages": {
+        "django": {
+          "pkg": "django",
+          "dir": "django"
+        },
+        "mysqlclient": {
+          "pkg": "mysqlclient",
+          "dir": "MySQLdb"
+        },
+        "pymysql": {
+          "pkg": "pymysql",
+          "dir": "pymysql"
+        },
+        "pillow": {
+          "pkg": "Pillow",
+          "dir": "PIL"
+        },
+        "linebot": {
+          "pkg": "line-bot-sdk",
+          "dir": "linebot"
+        },
+        "stripe": {
+          "pkg": "stripe",
+          "dir": "stripe"
+        },
+        "social_auth_app_django": {
+          "pkg": "social-auth-app-django",
+          "dir": "social_django"
+        }
+      }
+    },
+    "repository": {
+      "repositories": [
+        {
+          "owner":"anybirth",
+          "name":"enybank_web"
+        },
+        {
+          "owner":"anybirth",
+          "name":"enybank_bot"
+        },
+        {
+          "owner":"tab0902",
+          "name":"isekai_shokudo"
+        }
+      ]
+    },
+    "certbot": {
+      "webroot":"/var/www/html",
+      "email":"tabuchi@ewewing.com",
+      "domains": {
+        "enybank_web": "enybank.ewewing.work",
+        "isekai_shokudo": "isekai-shokudo.ewewing.work"
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}
