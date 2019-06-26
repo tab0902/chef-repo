@@ -12,11 +12,3 @@ end
 service "vboxadd-service" do
   action :start
 end
-
-file '/etc/localtime' do
-  owner "root"
-  group "root"
-  mode 0644
-  manage_symlink_source true
-  content IO.read('/usr/share/zoneinfo/Japan')
-end
