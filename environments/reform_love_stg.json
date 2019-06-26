@@ -1,12 +1,15 @@
 {
   "name": "reform_love_stg",
-  "description": "remote staging environment for reform_love",
+  "description": "staging env for reform_love",
   "chef_type": "environment",
   "json_class": "Chef::Environment",
   "default_attributes": {
+    "swap": {
+      "path": "/swapfile",
+      "size": 1024
+    },
     "user": {
-      "name":"centos",
-      "password": "$1$URiBuuEU$BQl.YCEIL1b2oYCA3yBQr."
+      "name":"centos"
     },
     "mysql": {
       "repository": "mysql-community-release-el6-7.noarch.rpm",
