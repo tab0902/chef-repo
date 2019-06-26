@@ -1,6 +1,6 @@
 {
   "id": "mysql",
-  "django_dev": {
+  "ewewing_django_mock": {
     "encrypted_data": "L4VUE7n0vriJ5N+PRzUvDpKAu6CbKqTr2MiyxIck+qetVUs=\n",
     "iv": "yDAs0ZLEcPRHu6kA\n",
     "auth_tag": "0Q7m2g2txl+GWSBjmLxR8g==\n",
