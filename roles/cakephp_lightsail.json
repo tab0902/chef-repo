@@ -1,0 +1,26 @@
+{
+  "name": "cakephp_lightsail",
+  "description": "role for CakePHP (Lightsail)",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[selinux]",
+    "recipe[swap]",
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[remi]",
+    "recipe[vim]",
+    "recipe[apache]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[php]",
+    "recipe[repository]",
+    "recipe[composer]",
+    "recipe[cakephp]",
+    "recipe[certbot]"
+  ]
+}
