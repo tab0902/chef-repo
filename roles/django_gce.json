@@ -1,0 +1,26 @@
+{
+  "name": "django_gce",
+  "description": "role for Django (GCE)",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[selinux]",
+    "recipe[swap]",
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[vim]",
+    "recipe[apache]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]",
+    "recipe[repository]",
+    "recipe[certbot]",
+    "recipe[mod_wsgi]"
+  ]
+}
