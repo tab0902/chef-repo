@@ -4,6 +4,9 @@
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "timezone": {
+      "name": "Asia/Tokyo"
+    },
     "mysql": {
       "repository": "mysql-community-release-el6-7.noarch.rpm",
       "db_names": [
@@ -83,6 +86,7 @@
   "override_attributes": {
   },
   "run_list": [
+    "recipe[timezone]",
     "recipe[yum]",
     "recipe[epel]",
     "recipe[vbox]",

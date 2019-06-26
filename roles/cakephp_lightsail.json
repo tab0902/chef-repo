@@ -8,6 +8,7 @@
   "override_attributes": {
   },
   "run_list": [
+    "recipe[timezone]",
     "recipe[selinux]",
     "recipe[swap]",
     "recipe[sshd]",
