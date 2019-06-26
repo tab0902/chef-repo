@@ -11,7 +11,7 @@ timezone "#{timezone}" do
 end
 
 reboot "to_reflect_timezone_setting" do
-  action :request_reboot
+  action :nothing
   delay_mins 1
   reason "To reflect timezone setting"
 end
