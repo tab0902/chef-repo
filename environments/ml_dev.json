@@ -1,6 +1,6 @@
 {
-  "name": "ml_local",
-  "description": "local development environment for machine learning",
+  "name": "ml_dev",
+  "description": "development env for Machine Learning",
   "chef_type": "environment",
   "json_class": "Chef::Environment",
   "default_attributes": {
