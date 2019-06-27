@@ -1,6 +1,6 @@
 {
-  "name": "ml_local",
-  "description": "local environment for machine learning",
+  "name": "ml_vagrant",
+  "description": "role for Machine Learning (Vagrant)",
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
