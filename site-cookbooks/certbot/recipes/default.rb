@@ -18,15 +18,14 @@ if node['certbot'].has_key?("domains") then
     revision "master"
     user "#{user_name}"
     group "#{user_name}"
-    action :checkout
-    notifies :run, "execute[set_env_for_certbot]", :immediately
+    action :sync
   end
 
   execute "set_env_for_certbot" do
-    action :nothing
     user "#{user_name}"
     group "#{user_name}"
     environment "HOME" => "/home/#{user_name}"
+    not_if "grep -q '$HOME/certbot:$PATH' /home/#{user_name}/.bashrc"
     command <<-EOS
       echo 'export PATH="$HOME/certbot:$PATH"' >> ~/.bashrc
       source ~/.bashrc
