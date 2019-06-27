@@ -20,12 +20,5 @@
     "auth_tag": "C7GDPTaLE8Hl8dnbCS/VmA==\n",
     "version": 3,
     "cipher": "aes-256-gcm"
-  },
-  "wp_local": {
-    "encrypted_data": "+DmMeUXWEYMEXlOQoQgqu47/OA2b8SC1WCD6Hy7LhjheYH4=\n",
-    "iv": "DtUKH6686akLcZsF\n",
-    "auth_tag": "Eq0UWFOIYTyU3/2QlsSHkw==\n",
-    "version": 3,
-    "cipher": "aes-256-gcm"
   }
 }
