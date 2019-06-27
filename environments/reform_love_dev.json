@@ -1,6 +1,6 @@
 {
-  "name": "reform_love_local",
-  "description": "local development environment for reform_love",
+  "name": "reform_love_dev",
+  "description": "development env for reform_love",
   "chef_type": "environment",
   "json_class": "Chef::Environment",
   "default_attributes": {
