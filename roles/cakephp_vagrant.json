@@ -1,6 +1,6 @@
 {
-  "name": "cakephp_local",
-  "description": "local environment for cakephp",
+  "name": "cakephp_vagrant",
+  "description": "role for CakePHP (Vagrant)",
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
