@@ -19,6 +19,7 @@ template "#{wsgi_conf}" do
   group "root"
   mode 0644
   source "wsgi.conf.erb"
+  notifies :restart, "service[httpd]", :delayed
   variables({
     :user_name => user_name,
     :miniconda_version => miniconda_version,
@@ -32,7 +33,6 @@ execute "install_mod_wsgi" do
   group "#{user_name}"
   environment "HOME" => "/home/#{user_name}"
   not_if "find #{mod_wsgi}"
-  notifies :restart, "service[httpd]", :delayed
   command <<-EOS
     #{pip} install mod_wsgi
   EOS
