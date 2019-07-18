@@ -1,26 +1,113 @@
-LoadModule wsgi_module /home/<%=@user_name%>/.pyenv/versions/miniconda<%=@python_version.to_i%>-<%=@miniconda_version%>/lib/python<%=@python_version%>/site-packages/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so
-WSGIPythonHome /home/<%=@user_name%>/.pyenv/versions/miniconda<%=@python_version.to_i%>-<%= @miniconda_version %>/
-WSGISocketPrefix /var/run/wsgi
-WSGIDaemonProcess <%=@project_name%> python-path=/home/<%=@user_name%>/<%=@project_name%>
-WSGIScriptAlias / /home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/wsgi.py
+<% @ports.each do |port| %>
+NameVirtualHost *:<%=port%>
+<% end %>
 
-<Directory "/<%=@user_name%>/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>">
-  <Files wsgi.py>
-    WSGIProcessGroup <%=@project_name%>
+LoadModule wsgi_module /home/<%=@user_name%>/.pyenv/versions/miniconda<%=@python_version.to_i%>-<%=@miniconda_version%>/lib/python<%=@python_version%>/site-packages/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so
+WSGIPythonHome /home/<%=@user_name%>/.pyenv/versions/miniconda<%=@python_version.to_i%>-<%=@miniconda_version%>/
+WSGISocketPrefix /var/run/wsgi
+<% @projects.each do |project| %>
+<% if project['port'].has_key?('secure') %>
+
+<VirtualHost *:<%=project['port']['secure']%>>
+  ServerName <%=project['host']%>
+
+  SSLEngine On
+  SSLCertificateFile /etc/letsencrypt/live/<%=project['host']%>/cert.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/<%=project['host']%>/privkey.pem
+  SSLCertificateChainFile /etc/letsencrypt/live/<%=project['host']%>/chain.pem
+
+  WSGIDaemonProcess <%=project['directory']%> python-path=/home/<%=@user_name%>/<%=project['directory']%>
+  WSGIScriptAlias / /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/wsgi.py
+
+  <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>">
+    <Files wsgi.py>
+      WSGIProcessGroup <%=project['directory']%>
+      Order allow,deny
+      Allow from all
+    </Files>
+  </Directory>
+
+  Alias /static/ /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/static/
+  Alias /media/ /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/media/
+
+  <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/static">
     Order allow,deny
     Allow from all
-  </Files>
-</Directory>
+  </Directory>
 
-Alias /static/ /home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/static/
-Alias /media/ /home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/media/
+  <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/media">
+    Order allow,deny
+    Allow from all
+  </Directory>
 
-<Directory "/home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/static">
-  Order allow,deny
-  Allow from all
-</Directory>
+</VirtualHost>
 
-<Directory "/home/<%=@user_name%>/<%=@project_name%>/<%=@project_name%>/media">
-  Order allow,deny
-  Allow from all
-</Directory>
+<VirtualHost *:<%=project['port']['insecure']%>>
+  ServerName <%=project['host']%>
+
+  RewriteEngine on
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
+
+<VirtualHost *:<%=project['port']['insecure']%>>
+    ServerName www.<%=project['host']%>
+
+    RewriteEngine on
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://<%=project['host']%>%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
+
+<VirtualHost *:<%=project['port']['secure']%>>
+    ServerName www.<%=project['host']%>
+
+    SSLEngine On
+    SSLCertificateFile /etc/letsencrypt/live/<%=project['host']%>/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/<%=project['host']%>/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/<%=project['host']%>/chain.pem
+
+    RewriteEngine on
+    RewriteRule ^(.*)$ https://<%=project['host']%>%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
+<% else %>
+
+<VirtualHost *:<%=project['port']['insecure']%>>
+  ServerName <%=project['host']%>
+
+  WSGIDaemonProcess <%=project['directory']%> python-path=/home/<%=@user_name%>/<%=project['directory']%>
+  WSGIScriptAlias / /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/wsgi.py
+
+  <Directory "/home/<%=@user_name%>/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>">
+    <Files wsgi.py>
+      WSGIProcessGroup <%=project['directory']%>
+      Order allow,deny
+      Allow from all
+    </Files>
+  </Directory>
+
+  Alias /static/ /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/static/
+  Alias /media/ /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/media/
+
+  <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/static">
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/media">
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+</VirtualHost>
+
+<VirtualHost *:<%=project['port']['insecure']%>>
+  ServerName www.<%=project['host']%>
+
+  RewriteEngine on
+  RewriteRule ^(.*)$ <%=project['host']%>%{REQUEST_URI} [R=301,L]
+</VirtualHost>
+<% end %>
+<% end %>

@@ -90,6 +90,30 @@
         "enybank_web": "enybank.ewewing.work",
         "isekai_shokudo": "isekai-shokudo.ewewing.work"
       }
+    },
+    "mod_wsgi": {
+      "ports": [
+        "80",
+        "443"
+      ],
+      "projects": [
+        {
+          "directory":"enybank_web",
+          "host":"enybank.ewewing.com",
+          "port": {
+            "secure": "443",
+            "insecure": "80"
+          }
+        },
+        {
+          "directory":"isekai_shokudo",
+          "host":"isekai-shokudo.ewewing.work",
+          "port": {
+            "secure": "443",
+            "insecure": "80"
+          }
+        }
+      ]
     }
   },
   "override_attributes": {
