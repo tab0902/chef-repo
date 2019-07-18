@@ -6,7 +6,7 @@
 
 version       = node['php']['version']
 user_name     = node['user']['name']
-repositories  = node['repository']['repositories']
+projects      = node['cakephp']['projects']
 composer_dir  = node['composer']['install_dir']
 composer_file = node['composer']['file_name']
 
@@ -17,14 +17,13 @@ package "php-intl" do
   options "--enablerepo=remi,remi-php#{version}"
 end
 
-repositories.each do |repository|
-  repo_name = repository['name']
+projects.each do |project|
 
-  execute "install_cakephp_files_to_#{repo_name}" do
+  execute "install_cakephp_files_to_#{project}" do
     user "#{user_name}"
     group "#{user_name}"
-    cwd "/home/#{user_name}/#{repo_name}"
-    not_if "find /home/#{user_name}/#{repo_name}/vendor"
+    cwd "/home/#{user_name}/#{project}"
+    not_if "find /home/#{user_name}/#{project}/vendor"
     command <<-EOS
       #{composer} install -n
     EOS
