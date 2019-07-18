@@ -1,0 +1,31 @@
+{
+  "name": "cakephp_django_conoha",
+  "description": "role for CakePHP and Django (ConoHa)",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[timezone]",
+    "recipe[sshd]",
+    "recipe[user]",
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[remi]",
+    "recipe[vim]",
+    "recipe[apache]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[repository]",
+    "recipe[php]",
+    "recipe[composer]",
+    "recipe[cakephp]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]",
+    "recipe[certbot]",
+    "recipe[mod_wsgi]"
+  ]
+}
