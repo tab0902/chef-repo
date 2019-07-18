@@ -1,0 +1,116 @@
+{
+  "name": "reform_love_prd",
+  "description": "production env for reform_love",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "timezone": {
+      "name": "Asia/Tokyo"
+    },
+    "user": {
+      "name":"prd",
+      "password":"$1$RkZ9/R3U$h8rtERzh8gZlDLeV.tt02."
+    },
+    "apache": {
+      "ports": [
+        "80",
+        "443"
+      ],
+      "projects": [
+        {
+          "directory":"reform_love/webroot",
+          "host":"reform-love.com",
+          "port": {
+            "secure": "443",
+            "insecure": "80"
+          }
+        }
+      ]
+    },
+    "mysql": {
+      "repository": "mysql-community-release-el6-7.noarch.rpm",
+      "db_names": [
+        "reform_love",
+        "reform_love_wp"
+      ]
+    },
+    "git": {
+      "version": "2.22.0"
+    },
+    "php": {
+      "version": "73"
+    },
+    "miniconda": {
+      "version": "4.3.30",
+      "python": {
+        "version": "3.6"
+      }
+    },
+    "django": {
+      "packages": {
+        "django": {
+          "pkg": "django",
+          "dir": "django"
+        },
+        "mysqlclient": {
+          "pkg": "mysqlclient",
+          "dir": "MySQLdb"
+        },
+        "pymysql": {
+          "pkg": "pymysql",
+          "dir": "pymysql"
+        },
+        "pillow": {
+          "pkg": "Pillow",
+          "dir": "PIL"
+        }
+      }
+    },
+    "repository": {
+      "repositories": [
+        {
+          "owner":"tab0902",
+          "name":"reform_love"
+        },
+        {
+          "owner":"tab0902",
+          "name":"reform_love_admin"
+        }
+      ]
+    },
+    "cakephp": {
+      "projects": [
+        "reform_love"
+      ]
+    },
+    "certbot": {
+      "webroot":"/var/www/html",
+      "email":"tabuchi@ewewing.com",
+      "domains": {
+        "reform_love": "reform-love.com",
+        "reform_love_admin": "admin.reform-love.com"
+      }
+    },
+    "mod_wsgi": {
+      "ports": [
+        "80",
+        "443"
+
+      ],
+      "projects": [
+        {
+          "directory":"reform_love_admin",
+          "host":"admin.reform-love.com",
+          "port": {
+            "secure": "443",
+            "insecure": "80"
+          }
+        }
+      ]
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}

@@ -14,7 +14,7 @@
     "version": 3,
     "cipher": "aes-256-gcm"
   },
-  "reform_love_stg": {
+  "reform_love_prd": {
     "encrypted_data": "zrkpsePxW9MciApjEj7HCG+oUozfnWoJ/mfR+k8mwtLuCxE=\n",
     "iv": "PcBLHOTe8T7U2ZNb\n",
     "auth_tag": "C7GDPTaLE8Hl8dnbCS/VmA==\n",
