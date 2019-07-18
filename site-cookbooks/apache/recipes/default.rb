@@ -6,6 +6,8 @@
 
 user_name  = node['user']['name']
 vhost_conf = node['apache']['vhost_conf']
+ports      = node['apache']['ports']
+projects   = node['apache']['projects']
 
 %W{ httpd httpd-devel }.each do |item|
   package "#{item}" do
@@ -26,23 +28,15 @@ execute "chmod_home_dir" do
   EOS
 end
 
-
-if node['apache'].has_key?("projects") then
-
-  ports    = node['apache']['ports']
-  projects = node['apache']['projects']
-
-  template "#{vhost_conf}" do
-    owner "root"
-    group "root"
-    mode 0644
-    source "vhost.conf.erb"
-    notifies :restart, "service[httpd]"
-    variables({
-      :user_name => user_name,
-      :ports => ports,
-      :projects => projects
-    })
-  end
-
+template "#{vhost_conf}" do
+  owner "root"
+  group "root"
+  mode 0644
+  source "vhost.conf.erb"
+  notifies :restart, "service[httpd]"
+  variables({
+    :user_name => user_name,
+    :ports => ports,
+    :projects => projects
+  })
 end

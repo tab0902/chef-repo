@@ -92,11 +92,6 @@
       }
     },
     "mod_wsgi": {
-      "ports": [
-        "80",
-        "443"
-
-      ],
       "projects": [
         {
           "directory":"reform_love_admin",

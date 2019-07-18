@@ -5,7 +5,6 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 wsgi_conf         = node['mod_wsgi']['wsgi_conf']
-ports             = node['mod_wsgi']['ports']
 projects          = node['mod_wsgi']['projects']
 user_name         = node['user']['name']
 miniconda_version = node['miniconda']['version']
@@ -24,7 +23,6 @@ template "#{wsgi_conf}" do
     :user_name => user_name,
     :miniconda_version => miniconda_version,
     :python_version => python_version,
-    :ports => ports,
     :projects => projects
   })
 end
