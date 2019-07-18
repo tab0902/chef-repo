@@ -5,6 +5,53 @@ NameVirtualHost *:<%=port%>
 <% @projects.each do |project| %>
 <% if project['port'].has_key?('secure') %>
 
+<VirtualHost *:<%=project['port']['secure']%>>
+  ServerName <%=project['host']%>
+
+  SSLEngine On
+  SSLCertificateFile /etc/letsencrypt/live/<%=project['host']%>/cert.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/<%=project['host']%>/privkey.pem
+  SSLCertificateChainFile /etc/letsencrypt/live/<%=project['host']%>/chain.pem
+
+  DocumentRoot /home/<%=@user_name%>/<%=project['directory']%>
+
+  <Directory "/home/<%=@user_name%>/<%=project['directory']%>">
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+</VirtualHost>
+
+<VirtualHost *:<%=project['port']['insecure']%>>
+  ServerName <%=project['host']%>
+
+  RewriteEngine on
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
+
+<VirtualHost *:<%=project['port']['insecure']%>>
+    ServerName www.<%=project['host']%>
+
+    RewriteEngine on
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://<%=project['host']%>%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
+
+<VirtualHost *:<%=project['port']['secure']%>>
+    ServerName www.<%=project['host']%>
+
+    SSLEngine On
+    SSLCertificateFile /etc/letsencrypt/live/<%=project['host']%>/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/<%=project['host']%>/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/<%=project['host']%>/chain.pem
+
+    RewriteEngine on
+    RewriteRule ^(.*)$ https://<%=project['host']%>%{REQUEST_URI} [R=301,L]
+
+</VirtualHost>
 <% else %>
 
 <VirtualHost *:<%=project['port']['insecure']%>>
