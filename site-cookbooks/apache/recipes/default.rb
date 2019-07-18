@@ -33,7 +33,7 @@ template "#{vhost_conf}" do
   group "root"
   mode 0644
   source "vhost.conf.erb"
-  notifies :restart, "service[httpd]"
+  notifies :restart, "service[httpd]", :delayed
   variables({
     :user_name => user_name,
     :ports => ports,

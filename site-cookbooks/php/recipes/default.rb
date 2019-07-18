@@ -24,7 +24,7 @@ template "#{php_ini}" do
   group "root"
   mode 0644
   source 'php.ini.erb'
-  notifies :restart, 'service[httpd]', :immediately
+  notifies :restart, 'service[httpd]', :delayed
   variables({
     :timezone => timezone,
     :language => language,

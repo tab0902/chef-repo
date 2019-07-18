@@ -32,7 +32,7 @@ execute "install_mod_wsgi" do
   group "#{user_name}"
   environment "HOME" => "/home/#{user_name}"
   not_if "find #{mod_wsgi}"
-  notifies :restart, "service[httpd]", :immediately
+  notifies :restart, "service[httpd]", :delayed
   command <<-EOS
     #{pip} install mod_wsgi
   EOS
