@@ -1,7 +1,6 @@
 <% @ports.each do |port| %>
 NameVirtualHost *:<%=port%>
 <% end %>
-
 <% @projects.each do |project| %>
 <% if project['port'].has_key?('secure') %>
 
