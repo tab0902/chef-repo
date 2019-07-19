@@ -23,11 +23,24 @@
     },
     "mysql": {
       "repository": "mysql-community-release-el6-7.noarch.rpm",
+      "db_host": "localhost",
       "db_names": [
         "enybank_web",
         "enybank_bot",
         "isekai_shokudo"
-      ]
+      ],
+      "config": {
+        "charset": "utf8",
+        "collate": "utf8_general_ci",
+        "general_log": "1",
+        "slow_query_log": "1",
+        "long_query_time": "5.0",
+        "log_queries_not_using_indexes": "0",
+        "server_id": "1",
+        "log_bin": "bin",
+        "hostname_in_log_bin": true,
+        "expire_logs_days": "7"
+      }
     },
     "git": {
       "version": "2.22.0"

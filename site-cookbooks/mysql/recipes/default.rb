@@ -7,10 +7,12 @@
 repository  = node['mysql']['repository']
 db_names    = node["mysql"]["db_names"]
 db_host     = node['mysql']['db_host']
-charset     = node['mysql']['charset']
-collate     = node['mysql']['collate']
 my_cnf      = node['mysql']['my_cnf']
+config      = node['mysql']['config']
+charset     = node['mysql']['config']['charset']
+collate     = node['mysql']['config']['collate']
 user_name   = node["user"]["name"]
+hostname    = node['hostname']
 environment = node.chef_environment
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{repository}" do
@@ -35,6 +37,20 @@ end
 
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
 password = data_bag["#{environment}"]
+
+template "#{my_cnf}" do
+  owner "root"
+  group "root"
+  mode 0644
+  source 'my.cnf.erb'
+  notifies :restart, 'service[mysqld]', :immediately
+  variables({
+    :hostname => hostname,
+    :user_name => user_name,
+    :password => password,
+    :config => config
+  })
+end
 
 template "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   owner "root"
@@ -86,17 +102,4 @@ end
 
 file "#{Chef::Config[:file_cache_path]}/create_db.sql" do
   action :delete
-end
-
-template "#{my_cnf}" do
-  owner "root"
-  group "root"
-  mode 0644
-  source 'my.cnf.erb'
-  notifies :restart, 'service[mysqld]', :immediately
-  variables({
-    :user_name => user_name,
-    :password => password,
-    :charset => charset
-  })
 end
