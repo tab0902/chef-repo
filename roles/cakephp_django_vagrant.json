@@ -1,0 +1,28 @@
+{
+  "name": "cakephp_django_vagrant",
+  "description": "role for CakePHP and Django (Vagrant)",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[timezone]",
+    "recipe[yum]",
+    "recipe[epel]",
+    "recipe[remi]",
+    "recipe[vbox]",
+    "recipe[vim]",
+    "recipe[apache]",
+    "recipe[mysql]",
+    "recipe[git]",
+    "recipe[repository]",
+    "recipe[php]",
+    "recipe[composer]",
+    "recipe[cakephp]",
+    "recipe[pyenv]",
+    "recipe[miniconda]",
+    "recipe[django]"
+  ]
+}
