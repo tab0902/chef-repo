@@ -10,25 +10,87 @@
     "user": {
       "name":"vagrant"
     },
+    "apache": {
+      "ports": [
+        "80"
+      ],
+      "projects": [
+        {
+          "directory":"reform_love/webroot",
+          "host":"192.168.33.22",
+          "port": {
+            "insecure": "80"
+          }
+        }
+      ]
+    },
     "mysql": {
       "repository": "mysql-community-release-el6-7.noarch.rpm",
       "db_names": [
-        "reform_love"
-      ]
+        "reform_love",
+        "reform_love_wp"
+      ],
+      "config": {
+        "charset": "utf8mb4",
+        "collate": "utf8mb4_bin",
+        "general_log": "1",
+        "slow_query_log": "1",
+        "long_query_time": "5.0",
+        "log_queries_not_using_indexes": "0",
+        "server_id": "1",
+        "log_bin": "bin",
+        "hostname_in_log_bin": true,
+        "expire_logs_days": "7"
+      }
     },
     "git": {
       "version": "2.22.0"
-    },
-    "php": {
-      "version": "73"
     },
     "repository": {
       "repositories": [
         {
           "owner":"tab0902",
           "name":"reform_love"
+        },
+        {
+          "owner":"tab0902",
+          "name":"reform_love_admin"
         }
       ]
+    },
+    "php": {
+      "version": "73"
+    },
+    "cakephp": {
+      "projects": [
+        "reform_love"
+      ]
+    },
+    "miniconda": {
+      "version": "4.3.30",
+      "python": {
+        "version": "3.6"
+      }
+    },
+    "django": {
+      "packages": {
+        "django": {
+          "pkg": "django",
+          "dir": "django"
+        },
+        "mysqlclient": {
+          "pkg": "mysqlclient",
+          "dir": "MySQLdb"
+        },
+        "pymysql": {
+          "pkg": "pymysql",
+          "dir": "pymysql"
+        },
+        "pillow": {
+          "pkg": "Pillow",
+          "dir": "PIL"
+        }
+      }
     }
   },
   "override_attributes": {
