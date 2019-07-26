@@ -38,20 +38,6 @@ end
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
 password = data_bag["#{environment}"]
 
-template "#{my_cnf}" do
-  owner "root"
-  group "root"
-  mode 0644
-  source 'my.cnf.erb'
-  notifies :restart, 'service[mysqld]', :immediately
-  variables({
-    :hostname => hostname,
-    :user_name => user_name,
-    :password => password,
-    :config => config
-  })
-end
-
 template "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   owner "root"
   group "root"
@@ -74,6 +60,20 @@ end
 
 file "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   action :delete
+end
+
+template "#{my_cnf}" do
+  owner "root"
+  group "root"
+  mode 0644
+  source 'my.cnf.erb'
+  notifies :restart, 'service[mysqld]', :immediately
+  variables({
+    :hostname => hostname,
+    :user_name => user_name,
+    :password => password,
+    :config => config
+  })
 end
 
 template "#{Chef::Config[:file_cache_path]}/create_db.sql" do
