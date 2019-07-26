@@ -50,8 +50,25 @@
     "git": {
       "version": "2.22.0"
     },
+    "repository": {
+      "repositories": [
+        {
+          "owner":"tab0902",
+          "name":"reform_love"
+        },
+        {
+          "owner":"tab0902",
+          "name":"reform_love_admin"
+        }
+      ]
+    },
     "php": {
       "version": "73"
+    },
+    "cakephp": {
+      "projects": [
+        "reform_love"
+      ]
     },
     "miniconda": {
       "version": "4.3.30",
@@ -78,23 +95,6 @@
           "dir": "PIL"
         }
       }
-    },
-    "repository": {
-      "repositories": [
-        {
-          "owner":"tab0902",
-          "name":"reform_love"
-        },
-        {
-          "owner":"tab0902",
-          "name":"reform_love_admin"
-        }
-      ]
-    },
-    "cakephp": {
-      "projects": [
-        "reform_love"
-      ]
     },
     "certbot": {
       "webroot":"/var/www/html",
