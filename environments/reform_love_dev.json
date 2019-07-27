@@ -89,6 +89,10 @@
         "pillow": {
           "pkg": "Pillow",
           "dir": "PIL"
+        },
+        "django_modeladmin_reorder": {
+          "pkg": "django-modeladmin-reorder",
+          "dir": "admin_reorder"
         }
       }
     }
