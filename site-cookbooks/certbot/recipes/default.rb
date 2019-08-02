@@ -32,6 +32,11 @@ if node['certbot'].has_key?("domains") then
     EOS
   end
 
+  directory "/opt/eff.org/certbot" do
+    action :nothing
+    recursive true
+  end
+
   domains.each do |project_name, domain|
     execute "create_cert_for_#{project_name}" do
       user "root"
@@ -41,6 +46,7 @@ if node['certbot'].has_key?("domains") then
       command <<-EOS
         ./certbot-auto certonly --agree-tos --webroot -w #{webroot} -d #{domain} -m #{email} -n --keep
       EOS
+      notifies :delete, "directory[/opt/eff.org/certbot]", :before
     end
   end
 
