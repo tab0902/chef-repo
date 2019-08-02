@@ -9,7 +9,6 @@ db_name    = node["mysql"]["db_names"][0]
 db_host    = node['mysql']['db_host']
 charset    = node['mysql']['charset']
 repository = node['wordpress']['repository']
-httpd_conf = node['wordpress']['httpd_conf']
 environment = node.chef_environment
 
 wordpress = "/home/#{user_name}/wordpress"
@@ -55,16 +54,5 @@ template "#{wordpress}/wp-config.php" do
     :password => password,
     :db_host => db_host,
     :charset => charset
-  })
-end
-
-template "#{httpd_conf}" do
-  owner "root"
-  group "root"
-  mode 0644
-  source "httpd.conf.erb"
-  notifies :restart, "service[httpd]", :immediately
-  variables({
-    :wordpress => wordpress,
   })
 end
