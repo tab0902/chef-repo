@@ -123,7 +123,7 @@
       "projects": [
         {
           "directory":"enybank_web",
-          "host":"enybank.ewewing.com",
+          "host":"enybank.ewewing.work",
           "port": {
             "secure": "443",
             "insecure": "80"
