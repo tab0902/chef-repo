@@ -11,6 +11,7 @@
     "recipe[timezone]",
     "recipe[yum]",
     "recipe[epel]",
+    "recipe[ntpd]",
     "recipe[vbox]",
     "recipe[vim]",
     "recipe[git]",

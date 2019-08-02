@@ -12,6 +12,7 @@
     "recipe[yum]",
     "recipe[epel]",
     "recipe[remi]",
+    "recipe[ntpd]",
     "recipe[vbox]",
     "recipe[vim]",
     "recipe[apache]",
