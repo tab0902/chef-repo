@@ -1,7 +1,4 @@
-<% @db_names.each do |db_name| %>
-CREATE DATABASE <%= db_name %> CHARACTER SET <%= @charset %> COLLATE <%= @collate %>;
+CREATE DATABASE `<%= db_name %>` CHARACTER SET <%= @charset %> COLLATE <%= @collate %>;
 
-GRANT ALL ON <%= db_name %>.* TO '<%= @user_name %>'@'<%= @db_host %>' IDENTIFIED BY '<%= @password %>';
+GRANT ALL ON `<%= db_name %>`.* TO '<%= @user_name %>'@'<%= @db_host %>' IDENTIFIED BY '<%= @password %>';
 FLUSH PRIVILEGES;
-
-<% end %>

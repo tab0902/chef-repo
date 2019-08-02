@@ -43,7 +43,7 @@ template "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   group "root"
   mode 0644
   source "secure_install.sql.erb"
-  not_if "mysql -u root -p#{password} -D #{db_names[0]}"
+  only_if "mysql -u root -e 'show databases;'"
   notifies :run, "execute[secure_install]", :immediately
   variables({
     :password => password,
@@ -54,7 +54,6 @@ execute "secure_install" do
   action :nothing
   user "root"
   group "root"
-  only_if "mysql -u root -e 'show databases;'"
   command "mysql -u root < #{Chef::Config[:file_cache_path]}/secure_install.sql"
 end
 
@@ -76,30 +75,34 @@ template "#{my_cnf}" do
   })
 end
 
-template "#{Chef::Config[:file_cache_path]}/create_db.sql" do
-  owner "root"
-  group "root"
-  mode 0644
-  source "create_db.sql.erb"
-  not_if "mysql -u root -p#{password} -D #{db_names[0]}"
-  notifies :run, "execute[create_db]", :immediately
-  variables({
-    :db_names => db_names,
-    :db_host => db_host,
-    :user_name => user_name,
-    :password => password,
-    :charset => charset,
-    :collate => collate
-  })
-end
 
-execute "create_db" do
-  action :nothing
-  user "root"
-  group "root"
-  command "mysql -u root -p#{password} < #{Chef::Config[:file_cache_path]}/create_db.sql"
-end
+db_names.each do |db_name|
 
-file "#{Chef::Config[:file_cache_path]}/create_db.sql" do
-  action :delete
+  template "#{Chef::Config[:file_cache_path]}/create_db_#{db_name}.sql" do
+    owner "root"
+    group "root"
+    mode 0644
+    source "create_db.sql.erb"
+    not_if "mysql -u root -p#{password} -D #{db_name}"
+    notifies :run, "execute[create_db_#{db_name}]", :immediately
+    variables({
+      :db_name => db_name,
+      :db_host => db_host,
+      :user_name => user_name,
+      :password => password,
+      :charset => charset,
+      :collate => collate
+    })
+  end
+
+  execute "create_db_#{db_name}" do
+    action :nothing
+    user "root"
+    group "root"
+    command "mysql -u root -p#{password} < #{Chef::Config[:file_cache_path]}/create_db_#{db_name}.sql"
+  end
+
+  file "#{Chef::Config[:file_cache_path]}/create_db_#{db_name}.sql" do
+    action :delete
+  end
 end
