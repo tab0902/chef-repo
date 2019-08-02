@@ -5,10 +5,10 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 user_name  = node['user']['name']
-db_name    = node["mysql"]["db_names"][0]
 db_host    = node['mysql']['db_host']
 charset    = node['mysql']['charset']
 repository = node['wordpress']['repository']
+db_name    = node["wordpress"]["db_name"]
 environment = node.chef_environment
 
 wordpress = "/home/#{user_name}/wordpress"
