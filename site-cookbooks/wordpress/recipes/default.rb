@@ -39,6 +39,10 @@ execute "chmod_wp-content" do
   EOS
 end
 
+file "/home/#{user_name}/#{repository}" do
+  action :delete
+end
+
 data_bag = Chef::EncryptedDataBagItem.load('passwords','mysql')
 password = data_bag["#{environment}"]
 
