@@ -6,7 +6,8 @@
 
 user_name  = node['user']['name']
 db_host    = node['mysql']['db_host']
-charset    = node['mysql']['charset']
+charset    = node['mysql']['config']['charset']
+collate    = node['mysql']['config']['collate']
 repository = node['wordpress']['repository']
 db_name    = node["wordpress"]["db_name"]
 environment = node.chef_environment
@@ -57,6 +58,7 @@ template "#{wordpress}/wp-config.php" do
     :user_name => user_name,
     :password => password,
     :db_host => db_host,
-    :charset => charset
+    :charset => charset,
+    :collate => collate
   })
 end
