@@ -93,6 +93,10 @@
         "django_modeladmin_reorder": {
           "pkg": "django-modeladmin-reorder",
           "dir": "admin_reorder"
+        },
+        "beautifulsoup4": {
+          "pkg": "beautifulsoup4",
+          "dir": "bs4"
         }
       }
     }

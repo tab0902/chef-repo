@@ -84,6 +84,10 @@
         "django_storages_google": {
           "pkg": "django-storages[google]",
           "dir": "storages"
+        },
+        "beautifulsoup4": {
+          "pkg": "beautifulsoup4",
+          "dir": "bs4"
         }
       }
     },
