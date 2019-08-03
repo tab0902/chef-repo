@@ -17,6 +17,9 @@ log-error = <%= @config['log_error'] %>
 <% end %>
 # General Log
 general_log = <%= @config['general_log'] %>
+<% if @config.has_key?('general_log_file') %>
+general_log_file = <%= @config['general_log_file'] %>
+<% end %>
 
 # Slow Query Log
 slow_query_log = <%= @config['slow_query_log'] %>
