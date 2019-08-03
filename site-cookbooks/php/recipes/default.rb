@@ -30,7 +30,7 @@ execute 'edit_php_ini' do
     sed -i -e "s/;mbstring.internal_encoding =/mbstring.internal_encoding = #{encoding}/g" #{php_ini}
     sed -i -e "s/;mbstring.http_input =/mbstring.http_input = #{encoding}/g" #{php_ini}
   EOS
-  notifies :restart, 'service[httpd]', :delayed
+  notifies :reload, 'service[httpd]', :delayed
 end
 
 if node['php']['packages'].include?("php-pecl-xdebug") then

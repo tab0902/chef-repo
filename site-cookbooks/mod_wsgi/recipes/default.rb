@@ -19,7 +19,7 @@ template "#{wsgi_conf}" do
   group "root"
   mode 0644
   source "wsgi.conf.erb"
-  notifies :restart, "service[httpd]", :delayed
+  notifies :reload, "service[httpd]", :delayed
   variables({
     :user_name => user_name,
     :miniconda_version => miniconda_version,

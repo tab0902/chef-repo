@@ -66,7 +66,7 @@ template "#{my_cnf}" do
   group "root"
   mode 0644
   source 'my.cnf.erb'
-  notifies :restart, 'service[mysqld]', :immediately
+  notifies :reload, 'service[mysqld]', :immediately
   variables({
     :hostname => hostname,
     :user_name => user_name,

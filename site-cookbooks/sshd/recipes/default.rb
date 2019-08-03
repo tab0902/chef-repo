@@ -22,7 +22,7 @@ execute 'edit_sshd_config' do
     sed -i -e "s/PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
     sed -i -e "s/#PasswordAuthentication no/PasswordAuthentication no/g" /etc/ssh/sshd_config
   EOS
-  notifies :restart, 'service[sshd]', :delayed
+  notifies :reload, 'service[sshd]', :delayed
 end
 
 service 'sshd' do
