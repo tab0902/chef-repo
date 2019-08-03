@@ -26,6 +26,7 @@
     },
     "mysql": {
       "repository": "mysql-community-release-el6-7.noarch.rpm",
+      "db_host": "localhost",
       "db_names": [
         "reform_love",
         "reform_love_wp"
