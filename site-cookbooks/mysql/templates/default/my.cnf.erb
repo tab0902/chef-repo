@@ -31,7 +31,7 @@ log_queries_not_using_indexes = <%= @config['log_queries_not_using_indexes'] %>
 <% if @config.has_key?('log_bin') %>
 # Binary Log
 server-id = <%= @config['server_id'] %>
-log-bin = /var/lib/mysql/<% if @config['hostname_in_log_bin'] %><%= @hostname %><% end %>-<%= @config['log_bin'] %>
+log-bin = /var/lib/mysql/<% if @config['hostname_in_log_bin'] %><%= @hostname %>-<% end %><%= @config['log_bin'] %>
 binlog-ignore-db = mysql
 binlog-format = MIXED
 expire_logs_days = <%= @config['expire_logs_days'] %>
