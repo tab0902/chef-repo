@@ -67,6 +67,15 @@
         "reform_love"
       ]
     },
+    "wordpress": {
+      "projects": {
+        "reform_love_wp": {
+          "destination": "/reform_love/webroot",
+          "directory": "column",
+          "db_name": "reform_love_wp"
+        }
+      }
+    },
     "miniconda": {
       "version": "4.3.30",
       "python": {

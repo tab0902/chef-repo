@@ -22,6 +22,7 @@
     "recipe[php]",
     "recipe[composer]",
     "recipe[cakephp]",
+    "recipe[wordpress]",
     "recipe[pyenv]",
     "recipe[miniconda]",
     "recipe[django]",
