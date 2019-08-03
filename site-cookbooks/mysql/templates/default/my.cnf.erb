@@ -1,67 +1,87 @@
+# For advice on how to change settings please see
+# http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html
+
 [mysqld]
+#
+# Remove leading # and set to the amount of RAM for the most important data
+# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
+# innodb_buffer_pool_size = 128M
+#
+# Remove leading # to turn on a very important data integrity option: logging
+# changes to the binary log between backups.
+# log_bin
+#
+# Remove leading # to set options mainly useful for reporting servers.
+# The server defaults are faster for transactions and fast SELECTs.
+# Adjust sizes as needed, experiment to find the optimal values.
+# join_buffer_size = 128M
+# sort_buffer_size = 2M
+# read_rnd_buffer_size = 2M
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
 
 # Disabling symbolic-links is recommended to prevent assorted security risks
-symbolic-links = 0
+symbolic-links=0
 
 # Recommended in standard MySQL setup
-sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO
 
 # Charset
-character-set-server = <%= @config['charset'] %>
-collation-server = <%= @config['collate'] %>
+character-set-server=<%= @config['charset'] %>
+collation-server=<%= @config['collate'] %>
 
 <% if @config.has_key?('log_error') %>
 # Error Log
-log-error = <%= @config['log_error'] %>
+log-error=<%= @config['log_error'] %>
 
 <% end %>
 # General Log
-general_log = <%= @config['general_log'] %>
+general_log=<%= @config['general_log'] %>
 <% if @config.has_key?('general_log_file') %>
-general_log_file = <%= @config['general_log_file'] %>
+general_log_file=<%= @config['general_log_file'] %>
 <% end %>
 
 # Slow Query Log
-slow_query_log = <%= @config['slow_query_log'] %>
+slow_query_log=<%= @config['slow_query_log'] %>
 <% if @config.has_key?('slow_query_log_file') %>
-slow_query_log_file = <%= @config['slow_query_log_file'] %>
+slow_query_log_file=<%= @config['slow_query_log_file'] %>
 <% end %>
 <% if @config.has_key?('slow_query_log') %>
-long_query_time = <%= @config['long_query_time'] %>
-log_queries_not_using_indexes = <%= @config['log_queries_not_using_indexes'] %>
+long_query_time=<%= @config['long_query_time'] %>
+log_queries_not_using_indexes=<%= @config['log_queries_not_using_indexes'] %>
 <% end %>
 
 <% if @config.has_key?('log_bin') %>
 # Binary Log
-server-id = <%= @config['server_id'] %>
-log-bin = /var/lib/mysql/<% if @config['hostname_in_log_bin'] %><%= @hostname %>-<% end %><%= @config['log_bin'] %>
-binlog-ignore-db = mysql
-binlog-format = MIXED
-expire_logs_days = <%= @config['expire_logs_days'] %>
+server-id=<%= @config['server_id'] %>
+log-bin=/var/lib/mysql/<% if @config['hostname_in_log_bin'] %><%= @hostname %>-<% end %><%= @config['log_bin'] %>
+binlog-ignore-db=mysql
+binlog-format=MIXED
+expire_logs_days=<%= @config['expire_logs_days'] %>
 
 <% end %>
 <% if @config.has_key?('relay_log') %>
 # Relay Log
-relay-log = <%= @config['expire_logs_days'] %>
+relay-log=<%= @config['expire_logs_days'] %>
 
 <% end %>
 # Always Store Table Names in Lowercase
-lower_case_table_names = 1
+lower_case_table_names=1
 
 # Avoid Implicit default Values
-explicit_defaults_for_timestamp = 1
+explicit_defaults_for_timestamp=1
 
 # Setting to fix a bug in MySQL 5.6
-table_definition_cache = 400
+table_definition_cache=400
 
 [mysql]
-default-character-set = <%= @config['charset'] %>
+default-character-set=<%= @config['charset'] %>
 
 [mysqldump]
-default-character-set = <%= @config['charset'] %>
+default-character-set=<%= @config['charset'] %>
 
 [client]
-default-character-set = <%= @config['charset'] %>
+default-character-set=<%= @config['charset'] %>
 <% if @user_name == 'vagrant' %>
 password = "<%= @password %>"
 <% end %>
