@@ -1,1 +1,1 @@
-default['wordpress']['repository'] = "latest-ja.tar.gz"
+default['wordpress']['source'] = "latest-ja.tar.gz"

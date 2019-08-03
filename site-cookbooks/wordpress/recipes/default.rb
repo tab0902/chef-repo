@@ -4,41 +4,40 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-user_name  = node['user']['name']
-db_host    = node['mysql']['db_host']
-charset    = node['mysql']['config']['charset']
-collate    = node['mysql']['config']['collate']
-repository = node['wordpress']['repository']
-projects   = node["wordpress"]["projects"]
+user_name = node['user']['name']
+db_host   = node['mysql']['db_host']
+charset   = node['mysql']['config']['charset']
+collate   = node['mysql']['config']['collate']
+source    = node['wordpress']['source']
+projects  = node["wordpress"]["projects"]
 environment = node.chef_environment
 
 
 projects.each do |key, project|
 
-  source      = "/home/#{user_name}/#{repository}"
   destination = "/home/#{user_name}#{project['destination']}"
   directory   = "#{project['directory']}"
   db_name     = "#{project['db_name']}"
 
-  remote_file "#{source}" do
+  remote_file "#{destination}/#{source}" do
     owner "#{user_name}"
     group "#{user_name}"
     mode 0644
-    source "http://ja.wordpress.org/#{repository}"
+    source "http://ja.wordpress.org/#{source}"
     not_if "find #{destination}/#{directory}"
   end
 
   execute "unzip_wordpress" do
     user "#{user_name}"
     group "#{user_name}"
-    cwd "/home/#{user_name}"
+    cwd "#{destination}"
     not_if "find #{destination}/#{directory}"
     command <<-EOS
-      tar xfz #{source}
+      tar xfz #{destination}/#{source}
     EOS
   end
 
-  file "#{source}" do
+  file "#{destination}/#{source}" do
     action :delete
   end
 
