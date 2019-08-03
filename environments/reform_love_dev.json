@@ -60,7 +60,21 @@
       ]
     },
     "php": {
-      "version": "73"
+      "version": "73",
+      "timezone": "Asia/Tokyo",
+      "language": "Japanese",
+      "encoding": "UTF-8",
+      "packages": [
+        "php",
+        "php-devel",
+        "php-mysqlnd",
+        "php-pdo",
+        "php-gd",
+        "php-mbstring",
+        "php-opcache",
+        "php-xml",
+        "php-pecl-xdebug"
+      ]
     },
     "cakephp": {
       "projects": [
