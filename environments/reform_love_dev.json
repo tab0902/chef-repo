@@ -93,6 +93,9 @@
         }
       }
     },
+    "ruby": {
+      "version": "2.6.3"
+    },
     "miniconda": {
       "version": "4.3.30",
       "python": {
