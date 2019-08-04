@@ -43,7 +43,7 @@ template "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   group "root"
   mode 0644
   source "secure_install.sql.erb"
-  only_if "mysql -u root -e 'show databases;'"
+  not_if "mysql -u root -p#{password} -e 'show databases;'"
   notifies :run, "execute[secure_install]", :immediately
   variables({
     :password => password,
