@@ -13,8 +13,8 @@
         "80",
         "443"
       ],
-      "projects": [
-        {
+      "projects": {
+        "reform_love": {
           "directory":"reform_love/webroot",
           "host":"reform-love.com",
           "port": {
@@ -22,7 +22,7 @@
             "insecure": "80"
           }
         }
-      ]
+      }
     },
     "mysql": {
       "config": {
@@ -57,8 +57,8 @@
       }
     },
     "mod_wsgi": {
-      "projects": [
-        {
+      "projects": {
+        "reform_love_admin": {
           "directory":"reform_love_admin",
           "host":"admin.reform-love.com",
           "port": {
@@ -66,7 +66,7 @@
             "insecure": "80"
           }
         }
-      ]
+      }
     }
   },
   "override_attributes": {

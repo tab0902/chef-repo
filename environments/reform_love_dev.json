@@ -8,15 +8,15 @@
       "ports": [
         "80"
       ],
-      "projects": [
-        {
+      "projects": {
+        "reform_love": {
           "directory":"reform_love/webroot",
           "host":"192.168.33.22",
           "port": {
             "insecure": "80"
           }
         }
-      ]
+      }
     },
     "mysql": {
       "config": {
