@@ -8,6 +8,7 @@ user_name         = node['user']['name']
 miniconda_version = node['miniconda']['version']
 python_version    = node['miniconda']['python']['version']
 packages          = node['django']['packages']
+projects          = node['django']['projects']
 
 miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}"
 site_packages = "#{miniconda}/lib/python#{python_version}/site-packages"
@@ -70,5 +71,22 @@ if packages.has_key?("social_auth_app_django") then
     mode 0644
     source "user.py.erb"
   end
+end
 
+
+projects.each do |project|
+
+  execute "start_project_#{project}" do
+    user "#{user_name}"
+    group "#{user_name}"
+    cwd "/home/#{user_name}"
+    environment ({
+      "HOME" => "/home/#{user_name}",
+      "PATH" => "#{miniconda}/bin:#{ENV['PATH']}"
+    })
+    not_if "find /home/#{user_name}/#{project}"
+    command <<-EOS
+      django-admin startproject #{project}
+    EOS
+  end
 end

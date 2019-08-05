@@ -19,6 +19,19 @@ end
 
 projects.each do |project|
 
+  execute "create_project_#{project}" do
+    user "#{user_name}"
+    group "#{user_name}"
+    cwd "/home/#{user_name}"
+    environment ({
+      "HOME" => "/home/#{user_name}"
+    })
+    not_if "find /home/#{user_name}/#{project}"
+    command <<-EOS
+      #{composer} create-project --prefer-dist cakephp/app #{project} -n
+    EOS
+  end
+
   execute "install_cakephp_files_to_#{project}" do
     user "#{user_name}"
     group "#{user_name}"

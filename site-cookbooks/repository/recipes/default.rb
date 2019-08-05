@@ -29,6 +29,7 @@ repositories.each do |repository|
     group "#{user_name}"
     action :checkout
     not_if "find /home/#{user_name}/#{repo_name}"
+    ignore_failure true
     notifies :run, "execute[remote_set_url_for_#{repo_name}]", :immediately
   end
 

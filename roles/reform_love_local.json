@@ -139,7 +139,10 @@
           "pkg": "beautifulsoup4",
           "dir": "bs4"
         }
-      }
+      },
+      "projects": [
+        "reform_love_admin"
+      ]
     }
   },
   "override_attributes": {
