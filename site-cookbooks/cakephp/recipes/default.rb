@@ -23,6 +23,9 @@ projects.each do |project|
     user "#{user_name}"
     group "#{user_name}"
     cwd "/home/#{user_name}/#{project}"
+    environment ({
+      "HOME" => "/home/#{user_name}"
+    })
     not_if "find /home/#{user_name}/#{project}/vendor"
     command <<-EOS
       #{composer} install -n

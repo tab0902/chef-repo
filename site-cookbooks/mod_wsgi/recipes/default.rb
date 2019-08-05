@@ -10,9 +10,9 @@ user_name         = node['user']['name']
 miniconda_version = node['miniconda']['version']
 python_version    = node['miniconda']['python']['version']
 
-certbot  = "/home/#{user_name}/certbot"
-pip      = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}/bin/pip"
-mod_wsgi = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}/lib/python#{python_version}/site-packages/mod_wsgi"
+certbot   = "/home/#{user_name}/certbot"
+miniconda = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}"
+mod_wsgi  = "#{miniconda}/lib/python#{python_version}/site-packages/mod_wsgi"
 
 template "#{wsgi_conf}" do
   owner "root"
@@ -31,9 +31,12 @@ end
 execute "install_mod_wsgi" do
   user "#{user_name}"
   group "#{user_name}"
-  environment "HOME" => "/home/#{user_name}"
+  environment ({
+    "HOME" => "/home/#{user_name}",
+    "PATH" => "#{miniconda}/bin:#{ENV['PATH']}"
+  })
   not_if "find #{mod_wsgi}"
   command <<-EOS
-    #{pip} install mod_wsgi
+    pip install mod_wsgi
   EOS
 end

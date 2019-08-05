@@ -10,8 +10,6 @@ user_name    = node['user']['name']
 repositories = node['repository']['repositories']
 install_dir  = node['git']['install_dir']
 
-git = "#{install_dir}/bin/git"
-
 data_bag = Chef::EncryptedDataBagItem.load('passwords','github')
 
 repositories.each do |repository|
@@ -39,8 +37,12 @@ repositories.each do |repository|
     user "#{user_name}"
     group "#{user_name}"
     cwd "/home/#{user_name}/#{repo_name}"
+    environment ({
+      "HOME" => "/home/#{user_name}",
+      "PATH" => "#{install_dir}/bin:#{ENV['PATH']}"
+    })
     command <<-EOS
-      #{git} remote set-url origin git@github.com:#{repo_owner}/#{repo_name}
+      git remote set-url origin git@github.com:#{repo_owner}/#{repo_name}
     EOS
   end
 end

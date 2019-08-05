@@ -10,17 +10,19 @@ python_version    = node['miniconda']['python']['version']
 packages          = node['conda']['packages']
 
 miniconda     = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}"
-conda         = "#{miniconda}/bin/conda"
 site_packages = "#{miniconda}/lib/python#{python_version}/site-packages"
 
 packages.each do |key, value|
   execute "install_#{key}" do
     user "#{user_name}"
     group "#{user_name}"
-    environment "HOME" => "/home/#{user_name}"
+    environment ({
+      "HOME" => "/home/#{user_name}",
+      "PATH" => "#{miniconda}/bin:#{ENV['PATH']}"
+    })
     not_if "find #{site_packages}/#{value[:dir]}"
     command <<-EOS
-      #{conda} install -y #{value[:pkg]}
+      conda install -y #{value[:pkg]}
     EOS
   end
 end
