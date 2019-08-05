@@ -120,6 +120,19 @@
         }
       }
     },
+    "sass": {
+      "projects": {
+        "reform_love": {
+          "dirs": {
+            "sass": "./webroot/scss",
+            "css": "./webroot/css"
+          },
+          "extension": "scss",
+          "cascade": false,
+          "minify": true
+        }
+      }
+    },
     "miniconda": {
       "version": "4.3.30",
       "python": {

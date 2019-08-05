@@ -25,6 +25,7 @@
     "recipe[wordpress]",
     "recipe[ruby]",
     "recipe[node]",
+    "recipe[sass]",
     "recipe[pyenv]",
     "recipe[miniconda]",
     "recipe[django]",

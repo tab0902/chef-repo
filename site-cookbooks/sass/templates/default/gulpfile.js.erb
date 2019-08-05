@@ -1,0 +1,27 @@
+var gulp = require("gulp");
+var plumber = require("gulp-plumber");
+var sass = require("gulp-sass");
+var postcss = require("gulp-postcss");
+var autoprefixer = require("autoprefixer");
+var cleancss = require("gulp-clean-css");
+var rename = require("gulp-rename");
+
+gulp.task("css", function () {
+  return gulp.src("<%= @dirs['sass'] %>/*.<%= @extension %>")
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(postcss([
+      autoprefixer({
+        cascade: <%= @cascade %>
+      })
+    ]))
+    <% if @minify %>
+    .pipe(cleancss())
+    .pipe(rename({extname:".min.css"}))
+    <% end %>
+    .pipe(gulp.dest("<%= @dirs['css'] %>"));
+});
+
+gulp.task("default", function () {
+    gulp.watch("<%= @dirs['sass'] %>/*.<%= @extension %>", gulp.series("css"));
+});
