@@ -99,6 +99,29 @@
     "ruby": {
       "version": "2.6.3"
     },
+    "node": {
+      "version": "10.16.1",
+      "projects": {
+        "reform_love": {
+          "packages": {
+            "save": [
+            ],
+            "save_dev": [
+              "gulp",
+              "gulp-plumber",
+              "gulp-sass",
+              "gulp-clean-css",
+              "gulp-rename",
+              "gulp-postcss",
+              "autoprefixer"
+            ],
+            "global": [
+              "gulp-cli"
+            ]
+          }
+        }
+      }
+    },
     "miniconda": {
       "version": "4.3.30",
       "python": {
