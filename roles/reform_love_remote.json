@@ -4,6 +4,133 @@
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "timezone": {
+      "name": "Asia/Tokyo"
+    },
+    "mysql": {
+      "repository": "mysql-community-release-el6-7.noarch.rpm",
+      "db_host": "localhost",
+      "db_names": [
+        "reform_love",
+        "reform_love_wp"
+      ],
+      "config": {
+        "charset": "utf8mb4",
+        "collate": "utf8mb4_bin"
+      }
+    },
+    "git": {
+      "version": "2.22.0"
+    },
+    "repository": {
+      "repositories": [
+        {
+          "owner":"tab0902",
+          "name":"reform_love"
+        },
+        {
+          "owner":"tab0902",
+          "name":"reform_love_admin"
+        }
+      ]
+    },
+    "php": {
+      "version": "73",
+      "timezone": "Asia/Tokyo",
+      "language": "Japanese",
+      "encoding": "UTF-8"
+    },
+    "cakephp": {
+      "projects": [
+        "reform_love"
+      ]
+    },
+    "wordpress": {
+      "projects": {
+        "reform_love_wp": {
+          "destination": "/reform_love/webroot",
+          "directory": "column",
+          "db_name": "reform_love_wp"
+        }
+      }
+    },
+    "ruby": {
+      "version": "2.6.3"
+    },
+    "node": {
+      "version": "10.16.1",
+      "projects": {
+        "reform_love": {
+          "packages": {
+            "save": [
+            ],
+            "save_dev": [
+              "gulp",
+              "gulp-plumber",
+              "gulp-sass",
+              "gulp-clean-css",
+              "gulp-rename",
+              "gulp-postcss",
+              "autoprefixer"
+            ],
+            "global": [
+              "gulp-cli"
+            ]
+          }
+        }
+      }
+    },
+    "sass": {
+      "projects": {
+        "reform_love": {
+          "dirs": {
+            "sass": "./webroot/scss",
+            "css": "./webroot/css"
+          },
+          "extension": "scss",
+          "cascade": false,
+          "minify": true
+        }
+      }
+    },
+    "miniconda": {
+      "version": "4.3.30",
+      "python": {
+        "version": "3.6"
+      }
+    },
+    "django": {
+      "packages": {
+        "django": {
+          "pkg": "django",
+          "dir": "django"
+        },
+        "mysqlclient": {
+          "pkg": "mysqlclient",
+          "dir": "MySQLdb"
+        },
+        "pymysql": {
+          "pkg": "pymysql",
+          "dir": "pymysql"
+        },
+        "pillow": {
+          "pkg": "Pillow",
+          "dir": "PIL"
+        },
+        "django_modeladmin_reorder": {
+          "pkg": "django-modeladmin-reorder",
+          "dir": "admin_reorder"
+        },
+        "beautifulsoup4": {
+          "pkg": "beautifulsoup4",
+          "dir": "bs4"
+        }
+      }
+    },
+    "certbot": {
+      "webroot":"/var/www/html",
+      "email":"tabuchi@ewewing.com"
+    }
   },
   "override_attributes": {
   },
