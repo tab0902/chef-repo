@@ -13,7 +13,7 @@ if node['certbot'].has_key?("domains") then
   domains    = node['certbot']['domains']
   email      = node['certbot']['email']
 
-  git "/home/#{user_name}/certbot" do
+  git "/home/#{user_name}/.certbot" do
     repository "#{repository}"
     revision "master"
     user "#{user_name}"
@@ -25,9 +25,9 @@ if node['certbot'].has_key?("domains") then
     user "#{user_name}"
     group "#{user_name}"
     environment "HOME" => "/home/#{user_name}"
-    not_if "grep -q '$HOME/certbot:$PATH' /home/#{user_name}/.bashrc"
+    not_if "grep -q '$HOME/.certbot:$PATH' /home/#{user_name}/.bashrc"
     command <<-EOS
-      echo 'export PATH="$HOME/certbot:$PATH"' >> ~/.bashrc
+      echo 'export PATH="$HOME/.certbot:$PATH"' >> ~/.bashrc
       source ~/.bashrc
     EOS
   end
@@ -41,7 +41,7 @@ if node['certbot'].has_key?("domains") then
     execute "create_cert_for_#{project_name}" do
       user "root"
       group "root"
-      cwd "/home/#{user_name}/certbot"
+      cwd "/home/#{user_name}/.certbot"
       not_if "find /etc/letsencrypt/live/#{domain}"
       command <<-EOS
         ./certbot-auto certonly --agree-tos --webroot -w #{webroot} -d #{domain} -m #{email} -n --keep
