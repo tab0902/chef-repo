@@ -1,6 +1,6 @@
 {
-  "name": "cakephp_django_vagrant",
-  "description": "role for CakePHP and Django (Vagrant)",
+  "name": "reform_love_remote",
+  "description": "remote role for reform_love",
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
@@ -9,11 +9,11 @@
   },
   "run_list": [
     "recipe[timezone]",
+    "recipe[sshd]",
+    "recipe[user]",
     "recipe[yum]",
     "recipe[epel]",
     "recipe[remi]",
-    "recipe[ntpd]",
-    "recipe[vbox]",
     "recipe[vim]",
     "recipe[apache]",
     "recipe[mysql]",
@@ -28,6 +28,8 @@
     "recipe[sass]",
     "recipe[pyenv]",
     "recipe[miniconda]",
-    "recipe[django]"
+    "recipe[django]",
+    "recipe[certbot]",
+    "recipe[mod_wsgi]"
   ]
 }
