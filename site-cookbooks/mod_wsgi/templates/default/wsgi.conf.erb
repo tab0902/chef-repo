@@ -18,8 +18,12 @@ WSGISocketPrefix /var/run/wsgi
   <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>">
     <Files wsgi.py>
       WSGIProcessGroup <%=project['directory']%>
+      <% if @platform_version == 6 %>
       Order allow,deny
       Allow from all
+      <% elsif @platform_version == 7 %>
+      Require all granted
+      <% end %>
     </Files>
   </Directory>
 
@@ -27,13 +31,21 @@ WSGISocketPrefix /var/run/wsgi
   Alias /media/ /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/media/
 
   <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/static">
+    <% if @platform_version == 6 %>
     Order allow,deny
     Allow from all
+    <% elsif @platform_version == 7 %>
+    Require all granted
+    <% end %>
   </Directory>
 
   <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/media">
+    <% if @platform_version == 6 %>
     Order allow,deny
     Allow from all
+    <% elsif @platform_version == 7 %>
+    Require all granted
+    <% end %>
   </Directory>
 
 </VirtualHost>
@@ -79,8 +91,12 @@ WSGISocketPrefix /var/run/wsgi
   <Directory "/home/<%=@user_name%>/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>">
     <Files wsgi.py>
       WSGIProcessGroup <%=project['directory']%>
+      <% if @platform_version == 6 %>
       Order allow,deny
       Allow from all
+      <% elsif @platform_version == 7 %>
+      Require all granted
+      <% end %>
     </Files>
   </Directory>
 
@@ -88,13 +104,21 @@ WSGISocketPrefix /var/run/wsgi
   Alias /media/ /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/media/
 
   <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/static">
+    <% if @platform_version == 6 %>
     Order allow,deny
     Allow from all
+    <% elsif @platform_version == 7 %>
+    Require all granted
+    <% end %>
   </Directory>
 
   <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/media">
+    <% if @platform_version == 6 %>
     Order allow,deny
     Allow from all
+    <% elsif @platform_version == 7 %>
+    Require all granted
+    <% end %>
   </Directory>
 
 </VirtualHost>

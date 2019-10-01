@@ -4,10 +4,11 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-user_name  = node['user']['name']
-vhost_conf = node['apache']['vhost_conf']
-ports      = node['apache']['ports']
-projects   = node['apache']['projects']
+user_name        = node['user']['name']
+vhost_conf       = node['apache']['vhost_conf']
+ports            = node['apache']['ports']
+projects         = node['apache']['projects']
+platform_version = node['platform_version'].to_i
 
 %W{ httpd httpd-devel }.each do |item|
   package "#{item}" do
@@ -37,6 +38,7 @@ template "#{vhost_conf}" do
   variables({
     :user_name => user_name,
     :ports => ports,
-    :projects => projects
+    :projects => projects,
+    :platform_version => platform_version
   })
 end

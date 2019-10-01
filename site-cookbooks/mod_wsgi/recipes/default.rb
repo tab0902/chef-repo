@@ -9,6 +9,7 @@ projects          = node['mod_wsgi']['projects']
 user_name         = node['user']['name']
 miniconda_version = node['miniconda']['version']
 python_version    = node['miniconda']['python']['version']
+platform_version  = node['platform_version'].to_i
 
 certbot   = "/home/#{user_name}/certbot"
 miniconda = "/home/#{user_name}/.pyenv/versions/miniconda#{python_version.to_i}-#{miniconda_version}"
@@ -24,7 +25,8 @@ template "#{wsgi_conf}" do
     :user_name => user_name,
     :miniconda_version => miniconda_version,
     :python_version => python_version,
-    :projects => projects
+    :projects => projects,
+    :platform_version => platform_version
   })
 end
 
