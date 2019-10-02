@@ -1,0 +1,51 @@
+{
+  "name": "bookplaylist_prd",
+  "description": "production env for bookplaylist",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "user": {
+      "name":"prd",
+      "password":"$1$4m/6T1UL$LHD/HT6kxd4qQbu12Som9."
+    },
+    "apache": {
+      "ports": [
+        "80",
+        "443"
+      ],
+      "projects": {}
+    },
+    "mysql": {
+      "config": {
+        "log_error": "error.log",
+        "general_log": "0",
+        "slow_query_log": "1",
+        "slow_query_log_file": "slow.log",
+        "long_query_time": "5.0",
+        "log_queries_not_using_indexes": "0",
+        "server_id": "1",
+        "log_bin": "bin",
+        "hostname_in_log_bin": false,
+        "expire_logs_days": "7"
+      }
+    },
+    "certbot": {
+      "domains": {}
+    },
+    "mod_wsgi": {
+      "projects": {
+        "bookplaylist": {
+          "directory":"bookplaylist",
+          "host":"150.95.172.90",
+          "port": {
+            "insecure": "80"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}
