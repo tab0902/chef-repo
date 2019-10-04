@@ -8,7 +8,7 @@
       "name": "Asia/Tokyo"
     },
     "mysql": {
-      "repository": "mysql-community-release-el6-7.noarch.rpm",
+      "repository": "mysql-community-release-el7-7.noarch.rpm",
       "db_host": "localhost",
       "db_names": [
         "boolplaylist"
@@ -19,7 +19,7 @@
       }
     },
     "git": {
-      "version": "2.22.0"
+      "version": "2.23.0"
     },
     "repository": {
       "repositories": [
@@ -71,19 +71,17 @@
   },
   "run_list": [
     "recipe[timezone]",
-    "recipe[selinux]",
-    "recipe[swap]",
-    "recipe[sshd]",
+    "recipe[user]",
     "recipe[yum]",
     "recipe[epel]",
     "recipe[vim]",
     "recipe[apache]",
     "recipe[mysql]",
     "recipe[git]",
+    "recipe[repository]",
     "recipe[pyenv]",
     "recipe[miniconda]",
     "recipe[django]",
-    "recipe[repository]",
     "recipe[certbot]",
     "recipe[mod_wsgi]"
   ]
