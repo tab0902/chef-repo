@@ -58,13 +58,6 @@ end
 
 if packages.has_key?("social_auth_app_django") then
 
-  template "#{line_py}" do
-    owner "#{user_name}"
-    group "#{user_name}"
-    mode 0644
-    source "line.py.erb"
-  end
-
   template "#{user_py}" do
     owner "#{user_name}"
     group "#{user_name}"
