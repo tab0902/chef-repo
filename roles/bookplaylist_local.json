@@ -14,7 +14,7 @@
       "repository": "mysql-community-release-el7-7.noarch.rpm",
       "db_host": "localhost",
       "db_names": [
-        "boolplaylist"
+        "bookplaylist"
       ],
       "config": {
         "charset": "utf8mb4",

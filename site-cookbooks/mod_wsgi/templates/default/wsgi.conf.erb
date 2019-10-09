@@ -22,6 +22,7 @@ WSGISocketPrefix /var/run/wsgi
       Order allow,deny
       Allow from all
       <% elsif @platform_version == 7 %>
+      AllowOverride All
       Require all granted
       <% end %>
     </Files>
@@ -35,6 +36,7 @@ WSGISocketPrefix /var/run/wsgi
     Order allow,deny
     Allow from all
     <% elsif @platform_version == 7 %>
+    AllowOverride All
     Require all granted
     <% end %>
   </Directory>
@@ -44,6 +46,7 @@ WSGISocketPrefix /var/run/wsgi
     Order allow,deny
     Allow from all
     <% elsif @platform_version == 7 %>
+    AllowOverride All
     Require all granted
     <% end %>
   </Directory>
@@ -88,13 +91,14 @@ WSGISocketPrefix /var/run/wsgi
   WSGIDaemonProcess <%=project['directory']%> python-path=/home/<%=@user_name%>/<%=project['directory']%>
   WSGIScriptAlias / /home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>/wsgi.py
 
-  <Directory "/home/<%=@user_name%>/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>">
+  <Directory "/home/<%=@user_name%>/<%=project['directory']%>/<%=project['directory']%>">
     <Files wsgi.py>
       WSGIProcessGroup <%=project['directory']%>
       <% if @platform_version == 6 %>
       Order allow,deny
       Allow from all
       <% elsif @platform_version == 7 %>
+      AllowOverride All
       Require all granted
       <% end %>
     </Files>
@@ -108,6 +112,7 @@ WSGISocketPrefix /var/run/wsgi
     Order allow,deny
     Allow from all
     <% elsif @platform_version == 7 %>
+    AllowOverride All
     Require all granted
     <% end %>
   </Directory>
@@ -117,6 +122,7 @@ WSGISocketPrefix /var/run/wsgi
     Order allow,deny
     Allow from all
     <% elsif @platform_version == 7 %>
+    AllowOverride All
     Require all granted
     <% end %>
   </Directory>
