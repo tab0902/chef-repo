@@ -26,6 +26,10 @@
     },
     "repository": {
       "repositories": [
+        {
+          "owner":"tab0902",
+          "name":"bookplaylist"
+        }
       ]
     },
     "miniconda": {
