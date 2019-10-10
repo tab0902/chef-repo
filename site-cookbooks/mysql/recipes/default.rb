@@ -61,6 +61,16 @@ file "#{Chef::Config[:file_cache_path]}/secure_install.sql" do
   action :delete
 end
 
+execute "import_tzinfo" do
+  user "root"
+  group "root"
+  not_if "find #{Chef::Config[:file_cache_path]}/timezone.sql"
+  command <<-EOS
+    /usr/bin/mysql_tzinfo_to_sql /usr/share/zoneinfo > #{Chef::Config[:file_cache_path]}/timezone.sql
+    mysql -u root -p#{password} -D mysql < #{Chef::Config[:file_cache_path]}/timezone.sql
+  EOS
+end
+
 template "#{my_cnf}" do
   owner "root"
   group "root"

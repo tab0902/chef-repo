@@ -30,6 +30,9 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE
 character-set-server=<%= @config['charset'] %>
 collation-server=<%= @config['collate'] %>
 
+# Time Zone
+default-time-zone=<%= @config['timezone'] %>
+
 <% if @config.has_key?('log_error') %>
 # Error Log
 log-error=<%= @config['log_error'] %>
