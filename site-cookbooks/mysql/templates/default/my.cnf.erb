@@ -33,6 +33,11 @@ collation-server=<%= @config['collate'] %>
 # Time Zone
 default-time-zone=<%= @config['timezone'] %>
 
+# File Format
+innodb_large_prefix=ON
+innodb_file_format=Barracuda
+innodb_file_format_max=Barracuda
+
 <% if @config.has_key?('log_error') %>
 # Error Log
 log-error=<%= @config['log_error'] %>
