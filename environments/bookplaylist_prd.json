@@ -10,7 +10,8 @@
     },
     "apache": {
       "ports": [
-        "80"
+        "80",
+        "443"
       ],
       "projects": {}
     },
@@ -29,14 +30,17 @@
       }
     },
     "certbot": {
-      "domains": {}
+      "domains": {
+        "enybank_web": "booxmix.com"
+      }
     },
     "mod_wsgi": {
       "projects": {
         "bookplaylist": {
           "directory":"bookplaylist",
-          "host":"150.95.172.90",
+          "host":"booxmix.com",
           "port": {
+            "secure": "443",
             "insecure": "80"
           }
         }

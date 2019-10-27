@@ -69,7 +69,7 @@
     },
     "certbot": {
       "webroot":"/var/www/html",
-      "email":"tabuchi@ewewing.com"
+      "email":"admin@booxmix.com"
     }
   },
   "override_attributes": {
