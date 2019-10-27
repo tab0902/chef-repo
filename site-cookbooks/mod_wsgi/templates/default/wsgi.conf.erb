@@ -63,26 +63,32 @@ WSGISocketPrefix /var/run/wsgi
 </VirtualHost>
 
 <VirtualHost *:<%=project['port']['insecure']%>>
-    ServerName www.<%=project['host']%>
+  ServerName www.<%=project['host']%>
 
-    RewriteEngine on
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://<%=project['host']%>%{REQUEST_URI} [R=301,L]
+  RewriteEngine on
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://<%=project['host']%>%{REQUEST_URI} [R=301,L]
 
 </VirtualHost>
 
 <VirtualHost *:<%=project['port']['secure']%>>
-    ServerName www.<%=project['host']%>
+  ServerName www.<%=project['host']%>
 
-    SSLEngine On
-    SSLCertificateFile /etc/letsencrypt/live/<%=project['host']%>/cert.pem
-    SSLCertificateKeyFile /etc/letsencrypt/live/<%=project['host']%>/privkey.pem
-    SSLCertificateChainFile /etc/letsencrypt/live/<%=project['host']%>/chain.pem
+  SSLEngine On
+  SSLCertificateFile /etc/letsencrypt/live/<%=project['host']%>/cert.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/<%=project['host']%>/privkey.pem
+  SSLCertificateChainFile /etc/letsencrypt/live/<%=project['host']%>/chain.pem
 
-    RewriteEngine on
-    RewriteRule ^(.*)$ https://<%=project['host']%>%{REQUEST_URI} [R=301,L]
+  RewriteEngine on
+  RewriteRule ^(.*)$ https://<%=project['host']%>%{REQUEST_URI} [R=301,L]
 
 </VirtualHost>
+
+Alias /.well-known/ /home/<%=@user_name%>/<%=project['directory']%>/.well-known/
+<Location .well-known="">
+    Options -Indexes
+</Location>
+
 <% else %>
 
 <VirtualHost *:<%=project['port']['insecure']%>>
