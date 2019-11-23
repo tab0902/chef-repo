@@ -22,6 +22,9 @@
     "git": {
       "version": "2.23.0"
     },
+    "wkhtmltopdf": {
+      "version": "0.12.4"
+    },
     "repository": {
       "repositories": [
         {
@@ -87,6 +90,7 @@
     "recipe[apache]",
     "recipe[mysql]",
     "recipe[git]",
+    "recipe[wkhtmltopdf]",
     "recipe[repository]",
     "recipe[pyenv]",
     "recipe[miniconda]",
