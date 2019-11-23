@@ -61,6 +61,10 @@
         "social_auth_app_django": {
           "pkg": "social-auth-app-django",
           "dir": "social_django"
+        },
+        "django_storages_google": {
+          "pkg": "django-storages[google]",
+          "dir": "storages"
         }
       },
       "projects": [
