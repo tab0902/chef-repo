@@ -71,6 +71,10 @@
         "social_auth_app_django": {
           "pkg": "social-auth-app-django",
           "dir": "social_django"
+        },
+        "emoji": {
+          "pkg": "emoji",
+          "dir": "emoji"
         }
       },
       "projects": [

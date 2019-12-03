@@ -72,6 +72,10 @@
         "django_storages_google": {
           "pkg": "django-storages[google]",
           "dir": "storages"
+        },
+        "emoji": {
+          "pkg": "emoji",
+          "dir": "emoji"
         }
       },
       "projects": [
