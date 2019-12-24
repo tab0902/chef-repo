@@ -6,7 +6,7 @@
   "default_attributes": {
     "user": {
       "name":"stg",
-      "password":"$1$b4eM14Xj$lzBBMssTDFPQ5NhpwAk2b1"
+      "password":"$1$XCTYMadx$s.iIq7a52eZKvKhEVnLUt."
     },
     "apache": {
       "ports": [
