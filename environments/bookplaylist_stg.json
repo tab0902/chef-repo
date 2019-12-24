@@ -1,0 +1,55 @@
+{
+  "name": "bookplaylist_stg",
+  "description": "staging env for bookplaylist",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "user": {
+      "name":"stg",
+      "password":"$1$b4eM14Xj$lzBBMssTDFPQ5NhpwAk2b1"
+    },
+    "apache": {
+      "ports": [
+        "80",
+        "443"
+      ],
+      "projects": {}
+    },
+    "mysql": {
+      "config": {
+        "log_error": "error.log",
+        "general_log": "1",
+        "general_log_file": "general.log",
+        "slow_query_log": "1",
+        "slow_query_log_file": "slow.log",
+        "long_query_time": "5.0",
+        "log_queries_not_using_indexes": "0",
+        "server_id": "1",
+        "log_bin": "bin",
+        "hostname_in_log_bin": false,
+        "expire_logs_days": "7"
+      }
+    },
+    "certbot": {
+      "domains": {
+        "enybank_web": "stg9ixh4f7u.booxmix.com"
+      }
+    },
+    "mod_wsgi": {
+      "projects": {
+        "bookplaylist": {
+          "directory":"bookplaylist",
+          "host":"stg9ixh4f7u.booxmix.com",
+          "port": {
+            "secure": "443",
+            "insecure": "80"
+          }
+        }
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "cookbook_versions": {
+  }
+}
