@@ -42,7 +42,7 @@
     "django": {
       "packages": {
         "django": {
-          "pkg": "django",
+          "pkg": "django==2.2.6",
           "dir": "django"
         },
         "mysqlclient": {
